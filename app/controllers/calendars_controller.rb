@@ -37,6 +37,7 @@ class CalendarsController < ApplicationController
   # DELETE /calendars/1
   def destroy
     @calendar.destroy
+    render json: @calendar
   end
 
   private

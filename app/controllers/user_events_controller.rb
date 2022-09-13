@@ -37,6 +37,7 @@ class UserEventsController < ApplicationController
   # DELETE /user_events/1
   def destroy
     @user_event.destroy
+    render json: @user_event
   end
 
   private

@@ -37,6 +37,7 @@ class GroupsController < ApplicationController
   # DELETE /groups/1
   def destroy
     @group.destroy
+    render json: @group
   end
 
   private

@@ -37,6 +37,7 @@ class TasksJoinersController < ApplicationController
   # DELETE /tasks_joiners/1
   def destroy
     @tasks_joiner.destroy
+    render json: @tasks_joiner
   end
 
   private
