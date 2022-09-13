@@ -9,8 +9,8 @@
 10.times do
     User.create!(
       full_name: Faker::Name.unique.name,
-      username: Faker::Lorem.word,
-      password_digest: Faker::String.random(length: 8),
+      username: Faker::Name.unique.name,
+      password: Faker::String.random(length: 10),
       email: Faker::Internet.email,
       profile_picture: "https://protkd.com/wp-content/uploads/2017/04/default-image.jpg"
     )
@@ -36,14 +36,14 @@ end
     )
 end
 
-2.times do
+4.times do
     Group.create!(
         title: Faker::Lorem.word,
         group_picture:"https://protkd.com/wp-content/uploads/2017/04/default-image.jpg"
     )
 end
 
-6.times do
+10.times do
     group_id = Group.all.sample().id
     group_users = Group.find(group_id).users.map{|user| user.id}
     user_id = User.pluck(:id).select{|id| group_users.exclude?(id)}.sample()
@@ -65,10 +65,12 @@ end
 
 
 Task.all.each do |task|
+    array = GroupJoiner.all.map {|joiner| [joiner.group_id, joiner.user_id]}
+    sample = array.sample()
     TasksJoiner.create!(
         task_id: task.id,
-        user_id: User.all.sample().id,
-        group_id: Group.all.sample().id
+        user_id: sample[1],
+        group_id: sample[0]
     )
 end
 
