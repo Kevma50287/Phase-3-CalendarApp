@@ -10,7 +10,7 @@
     User.create!(
       full_name: Faker::Name.unique.name,
       username: Faker::Name.unique.name,
-      password: Faker::String.random(length: 10),
+      password: "happy",
       email: Faker::Internet.email,
       profile_picture: "https://protkd.com/wp-content/uploads/2017/04/default-image.jpg"
     )
