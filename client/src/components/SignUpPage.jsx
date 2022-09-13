@@ -1,7 +1,7 @@
 import { useState } from "react"
-import "./SignUpPage.css"
-import signUpIcon from "./logos/user.png"
-import largeLogo from "./logos/largerIcon.png"
+import "../css/SignUpPage.css"
+import signUpIcon from "../logos/user.png"
+import largeLogo from "../logos/largerIcon.png"
 const SignUpPage = () => {
 //FIXME: need to have the passed down state holding users credential for sign up veritification 
     const initialSignUpState = {

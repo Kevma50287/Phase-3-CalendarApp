@@ -1,9 +1,8 @@
-import logo from "./logos/largerIcon.png"
-import check from "./logos/check.png"
+import logo from "../logos/largerIcon.png"
+import check from "../logos/check.png"
+import "../css/WelcomePage.css"
 
 import { useState, useEffect } from "react"
-
-import "./WelcomePage.css"
 
 const WelcomePage = () => {
     //TODO: Need get call for user login info 1-> sign up verification 2->login verification 
@@ -46,10 +45,10 @@ const WelcomePage = () => {
             {returnWelcomeArr}
             </div>
             <div>
-                <button className = "signUpBtn">Sign Up</button>
+                <button className = "signUpBtn">Sign Up</button> {/*TODO: Need handler to reroute to sign up page */}
             </div>
             <div>
-                <h4><u>Already signed up? Login</u></h4>
+                <h4><u>Already signed up? Login</u></h4>{/*TODO: Need handler to reroute to login page */}
             </div>
         </div>
     </>
