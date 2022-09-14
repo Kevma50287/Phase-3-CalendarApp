@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   resources :tasks_joiners
 
-  # resources :user_events
+  resources :user_events
 
   resources :group_joiners
 
@@ -13,9 +13,9 @@ Rails.application.routes.draw do
     resources :tasks
   end
 
-  # resources :groups
+  resources :groups
 
-  # resources :events
+  resources :events
 
   post "/login", to: "sessions#create"
   delete "/logout", to: "sessions#destroy"

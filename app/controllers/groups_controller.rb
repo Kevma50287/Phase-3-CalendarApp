@@ -4,7 +4,12 @@ class GroupsController < ApplicationController
 
   # GET /groups
   def index
-    @groups = Group.all
+    if session[:user_id]
+      user = User.find_by(id: session[:user_id])
+      @groups = user.groups
+    else
+      @groups = Group.all
+    end
 
     render json: @groups
   end
@@ -43,7 +48,12 @@ class GroupsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_group
-      @group = Group.find(params[:id])
+      if session[:user_id]
+        user = User.find_by(id: session[:user_id])
+        @group = user.groups[params[:id].to_i - 1]
+      else
+        @group = Group.find(params[:id])
+      end
     end
 
     # Only allow a list of trusted parameters through.

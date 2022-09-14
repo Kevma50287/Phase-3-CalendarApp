@@ -1,6 +1,7 @@
 class TasksJoinersController < ApplicationController
   before_action :set_tasks_joiner, only: %i[ show update destroy ]
   rescue_from ActiveRecord::RecordNotFound, with: :render_not_found
+  rescue_from ActiveRecord::RecordNotUnique, with: :render_not_unique
 
   # GET /tasks_joiners
   def index
@@ -53,5 +54,9 @@ class TasksJoinersController < ApplicationController
 
     def render_not_found
       render json: { error: "Tasks Joiner not found" }, status: 404
+    end
+
+    def render_not_unique
+      render json: { error: "This task has already been assigned to this user and group" }, status: 404
     end
 end

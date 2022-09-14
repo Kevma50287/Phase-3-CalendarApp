@@ -7,5 +7,9 @@ class CreateTasksJoiners < ActiveRecord::Migration[7.0]
 
       t.timestamps
     end
+
+    # validation of group and user pair - All users in a group should be unique
+    add_index :tasks_joiners, [:user_id, :group_id, :task_id], unique: true
+
   end
 end

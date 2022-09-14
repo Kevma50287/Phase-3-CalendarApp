@@ -4,7 +4,7 @@ class TasksJoiner < ApplicationRecord
     belongs_to :user
 
     #need to validate that each group and user id pair also exists in GroupJoiner
-    validate :inGroupJoiners?
+    validate :inGroupJoiners?, :unique_assignment?
 
     def inGroupJoiners?
         pair = [self.group.id, self.user.id]
@@ -13,4 +13,5 @@ class TasksJoiner < ApplicationRecord
             errors.add(:invalid_pair, "Cannot assign task to user. User is not in group")
         end
     end
+
 end
