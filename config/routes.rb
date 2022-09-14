@@ -1,23 +1,26 @@
 Rails.application.routes.draw do
-  root 'users#index'
 
   resources :tasks_joiners
 
-  resources :user_events
+  # resources :user_events
 
   resources :group_joiners
 
-  resources :users do
+  resources :users, only:[:update, :show, :destroy, :create] do
     resources :calendars
     resources :groups
     resources :events
     resources :tasks
   end
 
-  resources :groups
+  # resources :groups
 
-  resources :events
+  # resources :events
 
   post "/login", to: "sessions#create"
   delete "/logout", to: "sessions#destroy"
+
+  
+  post "/signup", to: "users#create"
+  get "/me", to: "users#show"
 end

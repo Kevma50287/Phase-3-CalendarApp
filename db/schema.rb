@@ -76,7 +76,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_13_161226) do
     t.string "full_name"
     t.string "username"
     t.string "email"
-    t.string "password"
     t.string "password_digest"
     t.string "profile_picture"
     t.datetime "created_at", null: false

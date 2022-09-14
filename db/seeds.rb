@@ -11,6 +11,7 @@
       full_name: Faker::Name.unique.name,
       username: Faker::Name.unique.name,
       password: "happy",
+      password_confirmation: "happy",
       email: Faker::Internet.email,
       profile_picture: "https://protkd.com/wp-content/uploads/2017/04/default-image.jpg"
     )
@@ -64,7 +65,7 @@ end
     )
 end
 
-
+# For every task we need a Task joiner 
 Task.all.each do |task|
     array = GroupJoiner.all.map {|joiner| [joiner.group_id, joiner.user_id]}
     sample = array.sample()

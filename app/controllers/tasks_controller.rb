@@ -1,10 +1,16 @@
 class TasksController < ApplicationController
   before_action :set_task, only: %i[ show update destroy ]
+  before_action :authorize, only: %i[ show update destroy ]
   rescue_from ActiveRecord::RecordNotFound, with: :render_not_found
 
-  # GET /tasks
+  # GET users/:user_id/tasks
   def index
-    @tasks = Task.all
+    if session[:user_id]
+      user = User.find_by(id: session[:user_id])
+      @tasks = user.tasks
+    else
+      @tasks = Task.all
+    end
 
     render json: @tasks
   end
@@ -17,9 +23,8 @@ class TasksController < ApplicationController
   # POST /tasks
   def create
     @task = Task.new(task_params)
-
     if @task.save
-      render json: @task, status: :created, location: @task
+      render json: @task, status: :created
     else
       render json: @task.errors, status: :unprocessable_entity
     end
@@ -43,15 +48,24 @@ class TasksController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_task
-      @task = Task.find(params[:id])
+      if session[:user_id]
+        user = User.find_by(id: session[:user_id])
+        @task = user.tasks[params[:id].to_i - 1]
+      else
+        @task = Task.find(params[:id])
+      end
     end
 
     # Only allow a list of trusted parameters through.
     def task_params
-      params.require(:task).permit(:title, :description, :due_date)
+      params.require(:task).permit(:title, :description, :start, :end)
     end
 
     def render_not_found
       render json: { error: "Task not found" }, status: 404
+    end
+
+    def authorize
+      return render json: { error: "Not authorized" }, status: :unauthorized unless session.include? :user_id
     end
 end
