@@ -28,11 +28,15 @@ end
     )
 end
 
-20.times do
+10.times do
+    event_id = Event.all.sample().id
+    event_users = Event.find(event_id).users.map{|user| user.id}
+    user_id = User.pluck(:id).select{|id| event_users.exclude?(id)}.sample()
+    
     UserEvent.create!(
         isAdmin?: false,
-        user_id: User.all.sample().id,
-        event_id: Event.all.sample().id
+        user_id: user_id,
+        event_id: event_id
     )
 end
 
@@ -55,7 +59,7 @@ end
     )
 end
 
-25.times do
+15.times do
     start = Faker::Time.between_dates(from: Date.today, to: Date.today + 300, period: :all)
     Task.create!(
         title: Faker::Lorem.word,

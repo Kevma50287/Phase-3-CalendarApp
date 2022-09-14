@@ -9,6 +9,6 @@ class CreateUserEvents < ActiveRecord::Migration[7.0]
     end
 
     #All users in a group should be unique
-    add_index :group_joiners, [:user_id, :event_id], unique: true
+    add_index :user_events, [:user_id, :event_id], unique: true
   end
 end

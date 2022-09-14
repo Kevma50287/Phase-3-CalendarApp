@@ -4,7 +4,7 @@ class TasksJoiner < ApplicationRecord
     belongs_to :user
 
     #need to validate that each group and user id pair also exists in GroupJoiner
-    validate :inGroupJoiners?, :unique_assignment?
+    validate :inGroupJoiners?
 
     def inGroupJoiners?
         pair = [self.group.id, self.user.id]
