@@ -1,9 +1,8 @@
 import { useState } from "react"
-import "./LoginPage.css"
-import largeLogo from "./logos/largerIcon.png"
-import signUpIcon from "./logos/user.png"
+import "../css/LoginPage.css"
+import largeLogo from "../logos/largerIcon.png"
+import loginIcon from "../logos/user.png"
 
-import loginIcon from "./logos/user.png"
 const LoginPage = () => {
 //FIXME: need to have the passed down state holding users credential for sign up veritification 
 
@@ -12,7 +11,7 @@ const LoginPage = () => {
         username: "",
         password: ""
     }
-    const[loginCredentials,setLoginCredentials] = useState ([])
+    const[loginCredentials,setLoginCredentials] = useState (initialLoginState)
 //Handlers
     //TODO: create the login check
     const handleLogin = ()=>{
@@ -48,8 +47,8 @@ const LoginPage = () => {
                     value = {loginCredentials.password}
                     onChange = {handleLoginCredentials}
                 ></input>
-                <button id = "loginBtn" onSubmit = {handleLogin}>Login</button> {/*FIXME: Need event and event listener attached*/}
-                <h4><u>Create an account for free!</u></h4>
+                <button id = "loginBtn" onSubmit = {handleLogin}>Login</button> {/*TODO: Need event and event handler attached*/}
+                <h4><u>Create an account for free!</u></h4> {/*TODO: Need event and event handler to redirect to login page*/}
         </form>
     </div>
     <div id = "appLogo">
@@ -60,3 +59,5 @@ const LoginPage = () => {
 
     )
 }
+
+export default LoginPage
