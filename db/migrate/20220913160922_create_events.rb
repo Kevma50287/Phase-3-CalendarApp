@@ -3,9 +3,13 @@ class CreateEvents < ActiveRecord::Migration[7.0]
     create_table :events do |t|
       t.string :title
       t.string :description
-      t.datetime :date
-      t.integer :start_time
-      t.integer :end_time
+
+      #For start date and end date
+      #Time format (YYYY:MM:DD)T(hh:mm:ss)
+      t.datetime :start
+      t.datetime :end
+
+      t.boolean :allDay
 
       t.timestamps
     end

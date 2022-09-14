@@ -24,9 +24,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_13_161226) do
   create_table "events", force: :cascade do |t|
     t.string "title"
     t.string "description"
-    t.datetime "date"
-    t.integer "start_time"
-    t.integer "end_time"
+    t.datetime "start"
+    t.datetime "end"
+    t.boolean "allDay"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -50,7 +50,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_13_161226) do
   create_table "tasks", force: :cascade do |t|
     t.string "title"
     t.string "description"
-    t.string "due_date"
+    t.datetime "start"
+    t.datetime "end"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

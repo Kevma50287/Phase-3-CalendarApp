@@ -17,18 +17,17 @@
 end
 
 10.times do
-    start_time = rand(0..1440)
+    start = Faker::Time.between_dates(from: Date.today, to: Date.today + 300, period: :all)
     Event.create!(
         title: Faker::Lorem.word,
         description: Faker::Lorem.sentence(word_count: 10),
-        date: Faker::Date.between(from: Date.today, to: 1.year.from_now),
-        start_time: start_time,
-        end_time: rand(start_time..1440)
+        start: start,
+        end: Faker::Time.between_dates(from: start, to: start + 3, period: :all),
+        allDay: true
     )
 end
 
 20.times do
-    start_time = rand(0..1440)
     UserEvent.create!(
         isAdmin?: false,
         user_id: User.all.sample().id,
@@ -55,11 +54,13 @@ end
     )
 end
 
-10.times do
+25.times do
+    start = Faker::Time.between_dates(from: Date.today, to: Date.today + 300, period: :all)
     Task.create!(
         title: Faker::Lorem.word,
         description: Faker::Lorem.sentence(word_count: 10),
-        due_date: Faker::Date.between(from: Date.today, to: 1.year.from_now) 
+        start: start,
+        end: Faker::Time.between_dates(from: start, to: start + 3, period: :all)
     )
 end
 

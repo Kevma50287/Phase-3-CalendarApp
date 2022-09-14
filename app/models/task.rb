@@ -3,4 +3,6 @@ class Task < ApplicationRecord
     has_many :users, through: :tasks_joiner
     has_one :group, through: :tasks_joiner
 
+    validates :start, :end, :title, presence: true
+
 end

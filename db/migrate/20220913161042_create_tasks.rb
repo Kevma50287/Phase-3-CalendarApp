@@ -3,7 +3,10 @@ class CreateTasks < ActiveRecord::Migration[7.0]
     create_table :tasks do |t|
       t.string :title
       t.string :description
-      t.string :due_date
+
+      #Time format (YYYY:MM:DD) (hh:mm:ss)
+      t.datetime :start
+      t.datetime :end
 
       t.timestamps
     end
