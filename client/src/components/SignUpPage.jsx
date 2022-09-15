@@ -2,16 +2,18 @@ import { useState } from "react"
 import "../css/SignUpPage.css"
 import signUpIcon from "../logos/user.png"
 import largeLogo from "../logos/largerIcon.png"
-const SignUpPage = () => {
+
+const SignUpPage = ({onLogin}) => {
 //FIXME: need to have the passed down state holding users credential for sign up veritification 
     const initialSignUpState = {
-        fullname: "",
-        username: "", //must be unique in DB
-        email: "", //must be unique in DB
+        full_name: "",
+        username: "",
+        email: "",
         password: "",
-        confirm_password: ""
+        password_confirmation: ""
     }
     const [signUpCredentials, setSignUpCredentials] = useState(initialSignUpState)
+
 
 //Event Handlers
     const handleSignUpCredentials = (e)=>{
@@ -21,7 +23,22 @@ const SignUpPage = () => {
             [name]:value}
         )
     }
-    //TODO: Need to create an handler to handle sign up
+    const handleSignUp = (e) => {
+        fetch("http://localhost:3000/signup", {
+            method:"POST",
+            headers: {
+                'Content-type': 'application/json'
+            },
+            body: JSON.stringify(signUpCredentials)
+        }).then(r=>{
+            if (r.ok){
+                r.json()
+            }
+        }).then(data => onLogin(data))
+        .catch(err => {
+            console.log(err)
+        })
+    }
 
     return (
         <>
@@ -39,23 +56,23 @@ const SignUpPage = () => {
                     <input
                         type = "text"
                         className = "userCredentialFormInputs"
-                        placeHolder = "Full Name"
-                        name = "fullname"
-                        value = {signUpCredentials.fullname}
+                        placeholder = "Full Name"
+                        name = "full_name"
+                        value = {signUpCredentials.full_name}
                         onChange = {handleSignUpCredentials}
                     ></input>
                     <input
                         type = "text"
                         className = "userCredentialFormInputs"
-                        placeHolder = "Username"
-                        name = "Username"
+                        placeholder = "Username"
+                        name = "username"
                         value = {signUpCredentials.username}
                         onChange = {handleSignUpCredentials}
                     ></input>
                     <input
                         type = "text"
                         className = "userCredentialFormInputs"
-                        placeHolder = "Email Address"
+                        placeholder = "Email Address"
                         name = "email"
                         value = {signUpCredentials.email}
                         onChange = {handleSignUpCredentials}
@@ -63,7 +80,7 @@ const SignUpPage = () => {
                     <input
                         type = "password"
                         className = "userCredentialFormInputs"
-                        placeHolder = "Password"
+                        placeholder = "Password"
                         name = "password"
                         value = {signUpCredentials.password}
                         onChange = {handleSignUpCredentials}
@@ -71,21 +88,17 @@ const SignUpPage = () => {
                     <input
                         type = "password"
                         className = "userCredentialFormInputs"
-                        placeHolder = "Confirm Password"
-                        name = "confirm_password"
-                        value = {signUpCredentials.confirm_password}
+                        placeholder = "Confirm Password"
+                        name = "password_confirmation"
+                        value = {signUpCredentials.password_confirmation}
                         onChange = {handleSignUpCredentials}
                     ></input>
-                    <button id = "signUpBtn">Sign Up</button> {/*FIXME: Need event and event listener attached*/}
+                    <button id = "signUpBtn" onClick={handleSignUp}>Sign Up</button>
                     <h4><u>Created an account? Login</u></h4>
                 </form>
             </div>
             {/*FIXME: uncomment and needs event/handler <button className = "backToBtn">←</button> */} 
         </div>
-        
-
-           
-  
     </>
     )
 }
