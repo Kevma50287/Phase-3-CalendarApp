@@ -20,14 +20,13 @@ const WelcomePage = () => {
 
     return (
     <>  
-
-            <div id = "shape"></div>
-        <div id = "logoContainer">
+        <div id = "shape"></div>
+        <div id = "welcomeLogoContainer">
             <div id = "logoHolder" className = "logo">
-                <img className= "logoHolder" src = {logo} alt = "something" height= "100px"></img>
+                <img src = {logo} alt = "something" height= "100px"></img>
             </div>
             <div id = "nameHolder" className = "logo">
-                <h1 id = "name">DoWork</h1>
+                <h1>DoWork</h1>
             </div>
         </div>
         
@@ -46,7 +45,7 @@ const WelcomePage = () => {
             <div id = "welcomeList">
             {returnWelcomeArr}
             </div>
-            <div id = "signOptionContainer">
+            <div id = "signUpBtnContainer">
                 <button className = "signUpBtn">Sign up today!</button> {/*TODO: Need handler to reroute to sign up page */}
             </div>
             <div id = "loginOptionContainer">
