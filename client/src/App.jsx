@@ -13,7 +13,7 @@ function App() {
   // useState to hold user information
   const [user, setUser] = useState(null)
 
-  // Check
+  // On initial load, will check to see if user is logged in through the sessions cookie
   useEffect(() => {
     fetch("/me")
     .then(r => r.json())
@@ -40,12 +40,10 @@ function App() {
   return (
     <>
     <Routes>
-      <Route path = "/" element={user ? <MainPage/> : <WelcomePage/>}/>
+      <Route path = "/" element={user ? <MainPage onLogout={handleLogout}/> : <WelcomePage/>}/>
       <Route path = "signup" element={<SignUpPage onSignup={handleLogin} />}/>
       <Route path = "login" element={<LoginPage onLogin={handleLogin}/>}/>
-
     </Routes>
-    {/* <LoginPage /> */}
     </>
   );
 }

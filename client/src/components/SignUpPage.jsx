@@ -24,7 +24,7 @@ const SignUpPage = ({onLogin}) => {
         )
     }
     const handleSignUp = (e) => {
-        fetch("http://localhost:3000/signup", {
+        fetch("/signup", {
             method:"POST",
             headers: {
                 'Content-type': 'application/json'

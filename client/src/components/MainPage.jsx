@@ -3,9 +3,8 @@ import UserCalendar from "./UserCalendar"
 import { useState, useEffect } from "react"
 import loggedInUserIcon from "../logos/loggedinuser.png"
 import smallerLogo from "../logos/smallerLogo.png"
-const MainPage = () => {
+const MainPage = ({onLogout}) => {
     const[userEvents, setUserEvents] = useState ([])
-
 
     useEffect(()=>{
         fetch("/users/10/events")
@@ -14,6 +13,13 @@ const MainPage = () => {
     },[])
 
     console.log(userEvents)
+
+    const handleLogout = (e) => {
+        fetch('/logout', {
+            method: "DELETE",
+        }).then(()=>onLogout())
+    }
+
     return(
         <>
             <div id = "header">
@@ -21,7 +27,7 @@ const MainPage = () => {
                     <img src = {smallerLogo}></img>
                     <h5>DoWork</h5>
                 </div>
-                <button id = "logoutBtn">Logout</button>
+                <button id = "logoutBtn" onClick={handleLogout}>Logout</button>
             </div>
             <div id="sideNavBar">
                 <div id = "sideWelcomeUser">
