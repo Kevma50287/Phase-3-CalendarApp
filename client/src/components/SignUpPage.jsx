@@ -25,61 +25,67 @@ const SignUpPage = () => {
 
     return (
         <>
-        <div id = "appLogo">
-            <img src = {largeLogo} alt = "logo"></img>
-            <h1>DoWork</h1>
+        <div id = "logoContainer">
+            <div id = "appLogo">
+                <img src = {largeLogo} alt = "logo"></img>
+                <h1>DoWork</h1>
+            </div>
         </div>
-        <div id = "signUpForm">
-            <form>
-                <img src = {signUpIcon} alt = "sign up page icon"></img>
-                <h3>Create an Account</h3>
-                <input
-                    type = "text"
-                    className = "userCredentialFormInputs"
-                    placeHolder = "Full Name"
-                    name = "fullname"
-                    value = {signUpCredentials.fullname}
-                    onChange = {handleSignUpCredentials}
-                ></input>
-                <input
-                    type = "text"
-                    className = "userCredentialFormInputs"
-                    placeHolder = "Username"
-                    name = "Username"
-                    value = {signUpCredentials.username}
-                    onChange = {handleSignUpCredentials}
-                ></input>
-                <input
-                    type = "text"
-                    className = "userCredentialFormInputs"
-                    placeHolder = "Email Address"
-                    name = "email"
-                    value = {signUpCredentials.email}
-                    onChange = {handleSignUpCredentials}
-                ></input>
-                <input
-                    type = "password"
-                    className = "userCredentialFormInputs"
-                    placeHolder = "Password"
-                    name = "password"
-                    value = {signUpCredentials.password}
-                    onChange = {handleSignUpCredentials}
-                ></input>
-                <input
-                    type = "password"
-                    className = "userCredentialFormInputs"
-                    placeHolder = "Confirm Password"
-                    name = "confirm_password"
-                    value = {signUpCredentials.confirm_password}
-                    onChange = {handleSignUpCredentials}
-                ></input>
-                <button id = "signUpBtn">Sign Up</button> {/*FIXME: Need event and event listener attached*/}
-                <h4><u>Created an account? Login</u></h4>
-            </form>
+        <div id = "signUpBackground">
+            <div id = "signUpFormContainer">
+                <form id = "signUpForm">
+                    <img src = {signUpIcon} alt = "sign up page icon"></img>
+                    <h3>Create an Account</h3>
+                    <input
+                        type = "text"
+                        className = "userCredentialFormInputs"
+                        placeHolder = "Full Name"
+                        name = "fullname"
+                        value = {signUpCredentials.fullname}
+                        onChange = {handleSignUpCredentials}
+                    ></input>
+                    <input
+                        type = "text"
+                        className = "userCredentialFormInputs"
+                        placeHolder = "Username"
+                        name = "Username"
+                        value = {signUpCredentials.username}
+                        onChange = {handleSignUpCredentials}
+                    ></input>
+                    <input
+                        type = "text"
+                        className = "userCredentialFormInputs"
+                        placeHolder = "Email Address"
+                        name = "email"
+                        value = {signUpCredentials.email}
+                        onChange = {handleSignUpCredentials}
+                    ></input>
+                    <input
+                        type = "password"
+                        className = "userCredentialFormInputs"
+                        placeHolder = "Password"
+                        name = "password"
+                        value = {signUpCredentials.password}
+                        onChange = {handleSignUpCredentials}
+                    ></input>
+                    <input
+                        type = "password"
+                        className = "userCredentialFormInputs"
+                        placeHolder = "Confirm Password"
+                        name = "confirm_password"
+                        value = {signUpCredentials.confirm_password}
+                        onChange = {handleSignUpCredentials}
+                    ></input>
+                    <button id = "signUpBtn">Sign Up</button> {/*FIXME: Need event and event listener attached*/}
+                    <h4><u>Created an account? Login</u></h4>
+                </form>
+            </div>
+            {/*FIXME: uncomment and needs event/handler <button className = "backToBtn">←</button> */} 
         </div>
-        <div>
-            <button className = "backToBtn">←</button>
-        </div>
+        
+
+           
+  
     </>
     )
 }
