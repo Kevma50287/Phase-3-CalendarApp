@@ -15,9 +15,15 @@ function App() {
 
   // Check
   useEffect(() => {
-    fetch("http://localhost:3000/me")
+    fetch("/me")
     .then(r => r.json())
-    .then(user => setUser(user))
+    .then(user => {
+      if (user["error"]){
+        console.log(user)
+      } else {
+        setUser(user)
+      }
+    })
     .catch(err => console.log(err))
   },[])
 
@@ -34,12 +40,11 @@ function App() {
   return (
     <>
     <Routes>
-      <Route path = "/" element={<WelcomePage/>}/>
+      <Route path = "/" element={user ? <MainPage/> : <WelcomePage/>}/>
       <Route path = "signup" element={<SignUpPage onSignup={handleLogin} />}/>
       <Route path = "login" element={<LoginPage onLogin={handleLogin}/>}/>
 
     </Routes>
-    {/* <MainPage/> */}
     {/* <LoginPage /> */}
     </>
   );

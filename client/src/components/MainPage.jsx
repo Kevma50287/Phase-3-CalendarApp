@@ -8,7 +8,7 @@ const MainPage = () => {
 
 
     useEffect(()=>{
-        fetch("http://127.0.0.1:3000/users/10/events")
+        fetch("/users/10/events")
         .then (r=>r.json())
         .then (userEventData => setUserEvents(userEventData))
     },[])

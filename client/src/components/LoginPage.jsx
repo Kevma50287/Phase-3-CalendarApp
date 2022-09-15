@@ -16,7 +16,7 @@ const LoginPage = ({onLogin}) => {
     //TODO: create the login check
     const handleLogin = (e)=>{
         e.preventDefault()
-        fetch("http://localhost:3000/login",{
+        fetch("/login",{
             method:"POST",
             headers:{
                 "Content-type":"application/json"
