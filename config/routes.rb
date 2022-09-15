@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  #FIXME: To delete the routes below 
+  resources :tasks
+  get "/users", to: "users#index"
+  
   resources :tasks_joiners
 
   resources :user_events
@@ -25,7 +29,5 @@ Rails.application.routes.draw do
   post "/signup", to: "users#create"
   get "/me", to: "users#show"
 
-  #FIXME: To delete the routes below 
-  resources :tasks
-  get "/users", to: "users#index"
+  
 end

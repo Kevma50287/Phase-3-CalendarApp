@@ -1,4 +1,4 @@
-import { Route, Switch } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import WelcomePage from "./components/WelcomePage";
 import './App.css';
 import SignUpPage from "./components/SignUpPage"; //get rid of after testing
@@ -10,15 +10,15 @@ import UserCalendar from "./components/UserCalendar";
 function App() {
   return (
     <>
-    <Switch>
-    <Route exact path = "/">
-        <WelcomePage/>
+    <Routes>
+      <Route path = "/" element={<WelcomePage/>}>
+        
         {/* <SignUpPage /> */}
         {/* <LoginPage /> */}
         {/* <MainPage /> */}
         {/* <UserCalendar/> */}
       </Route>
-    </Switch>
+    </Routes>
 
     </>
   );
