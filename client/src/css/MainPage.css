@@ -3,25 +3,35 @@ div#header {
     height:4.5rem;
     background-color:rgba(0, 0, 0, 0.821);
 }
-
-div#header> #logoHolder, button#{
-    display:inline-block;
-    margin-right:14px;
+#smallLogoContainer, #smallNameContainer, #logoutBtnContainer{
+    display: inline-block;
 }
-div#logoHolder > h5{
+#smallNameContainer {
+    height: 64px;
+    width:200px;
+
+}
+h5#smallName{
     position:absolute;
     top:0px;
     font-size: 2rem;
-    margin-top: 1rem;
+    margin-top: 1.5rem;
+    color:white
+    
 }
-div#logoHolder >img {
-    top:0px;
+div#smallLogoContainer {
+    margin-left: 5%;
 }
-button#logoutBtn{
-    display: inline-block;
+img#smallLogo {
+    top: 0;
 }
-
-
+div#logoutBtnContainer{
+    position:absolute;
+    width:fit-content;
+    height: 4.5rem;
+    top:1.5rem;
+    right:5%;
+}
 
 div#sideNavBar{
     display:flex;
@@ -94,5 +104,11 @@ div#userTags{
 
 .checkBox{
     cursor: pointer;
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+input.checkBoxInput {
+    cursor: pointer
 }
 
+/* FIXME: NEED CSS FOR THE GROUP CHECKBOX */
