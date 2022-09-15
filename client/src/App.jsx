@@ -10,15 +10,15 @@ import UserCalendar from "./components/UserCalendar";
 function App() {
   return (
     <>
-    <Routes>
+    {/* <Routes>
       <Route path = "/" element={<WelcomePage/>}>
         
         {/* <SignUpPage /> */}
         {/* <LoginPage /> */}
         <MainPage />
         {/* <UserCalendar/> */}
-      </Route>
-    </Routes>
+      {/* </Route> */}
+    {/*</Routes>*/}
 
     </>
   );
