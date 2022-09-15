@@ -12,10 +12,10 @@ function App() {
     <>
     <Switch>
     <Route exact path = "/">
-        <WelcomePage/>
+        {/* <WelcomePage/> */}
         {/* <SignUpPage /> */}
         {/* <LoginPage /> */}
-        {/* <MainPage /> */}
+        <MainPage />
         {/* <UserCalendar/> */}
       </Route>
     </Switch>

@@ -1,8 +1,10 @@
 import "../css/MainPage.css"
+import UserCalendar from "./UserCalendar"
 const MainPage = () => {
 
     return(
         <>
+            <div id = "header"></div>
             <div id="sideNavBar">
                 <div id = "sideWelcomeUser">
                     <img src = ""></img>
@@ -20,17 +22,7 @@ const MainPage = () => {
                 </div>
             </div>
             <div id = "calendarContainer">
-                <div id = "viewingOptionBar">
-                    <h1>{/*Insert the value of current month of what is being viewed*/}September 2022</h1>
-                    <button class = "viewOption">Previous</button> {/*FIXME: Needs event/handler. Needs a way for it to know whether in daily,weekly,or monthly */}
-                    <button class = "viewOption">Daily</button>{/*FIXME: Needs event/handler. Will change the state of the current viewing option. Default will be monthly */}
-                    <button class = "viewOption">Weekly</button>{/*FIXME: Needs event/handler. Will change the state of the current viewing option. Default will be monthly */}
-                    <button class = "viewOption">Monthly</button>{/*FIXME: Needs event/handler. Will change the state of the current viewing option. Default will be monthly */}
-                    <button class = "viewOption">Next</button>{/*FIXME: Needs event/handler. Needs a way for it to know whether in daily,weekly,or monthly */}
-                </div>
-                <div>
-                    
-                </div>
+                <UserCalendar />
             </div>
         </>
     )
