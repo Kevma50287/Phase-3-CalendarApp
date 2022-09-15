@@ -3,10 +3,10 @@ import check from "../logos/check.png"
 import "../css/WelcomePage.css"
 
 import { useState, useEffect } from "react"
+import { useNavigate } from "react-router-dom"
 
 const WelcomePage = () => {
-    //TODO: Need get call for user login info 1-> sign up verification 2->login verification 
-    const [userCredentials, setUserCredentials] = useState([]) //FIXME: set the user login info here
+    let navigate = useNavigate();
 
 
     const welcomeArr = ["Create your own calendar and logo.", "Collaborate with your team.", "Track goals and meet deadlines."]
@@ -16,6 +16,12 @@ const WelcomePage = () => {
             <div className = "listGroupElement"><h4>{element}</h4></div>
         </div>
     ))
+    const navigateToSignup = () => {
+        navigate('/signup')
+    }
+    const navigateToLogin = () => {
+        navigate('/login')
+    }
 
 
     return (
@@ -46,10 +52,10 @@ const WelcomePage = () => {
             {returnWelcomeArr}
             </div>
             <div id = "signUpBtnContainer">
-                <button className = "signUpBtn">Sign up today!</button> {/*TODO: Need handler to reroute to sign up page */}
+                <button className = "signUpBtn" onClick={navigateToSignup}>Sign up today!</button>
             </div>
             <div id = "loginOptionContainer">
-                <h4><u>Already signed up? Login</u></h4>{/*TODO: Need handler to reroute to login page */}
+                <h4 onClick={navigateToLogin}><u>Already signed up? Login</u></h4>
             </div>
         </div>
 
