@@ -21,6 +21,8 @@ function App() {
     .catch(err => console.log(err))
   },[])
 
+  console.log(user)
+
   function handleLogin(user) {
     setUser(user);
   }
@@ -31,13 +33,13 @@ function App() {
 
   return (
     <>
-    {/* <Routes>
+    <Routes>
       <Route path = "/" element={<WelcomePage/>}/>
       <Route path = "signup" element={<SignUpPage onSignup={handleLogin} />}/>
       <Route path = "login" element={<LoginPage onLogin={handleLogin}/>}/>
 
-    </Routes> */}
-    <MainPage/>
+    </Routes>
+    {/* <MainPage/> */}
     {/* <LoginPage /> */}
     </>
   );
