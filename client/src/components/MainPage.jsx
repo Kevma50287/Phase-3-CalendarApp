@@ -1,36 +1,59 @@
 import "../css/MainPage.css"
-const MainPage = () => {
+import UserCalendar from "./UserCalendar"
+import { useState, useEffect } from "react"
+import loggedInUserIcon from "../logos/loggedinuser.png"
+import smallerLogo from "../logos/smallerLogo.png"
+const MainPage = ({onLogout}) => {
+    const[userEvents, setUserEvents] = useState ([])
+
+    useEffect(()=>{
+        fetch("/users/10/events")
+        .then (r=>r.json())
+        .then (userEventData => setUserEvents(userEventData))
+    },[])
+
+    console.log(userEvents)
+
+    const handleLogout = (e) => {
+        fetch('/logout', {
+            method: "DELETE",
+        }).then(()=>onLogout())
+    }
 
     return(
         <>
+            <div id = "header">
+                <div id = "logoHolder">
+                    <img src = {smallerLogo}></img>
+                    <h5>DoWork</h5>
+                </div>
+                <button id = "logoutBtn" onClick={handleLogout}>Logout</button>
+            </div>
             <div id="sideNavBar">
                 <div id = "sideWelcomeUser">
-                    <img src = ""></img>
-                    <h3>Hello, `${"insert state that's holding the array"}`</h3> {/*FIXME: need to insert the state holding user info */}
+                    <img src = {loggedInUserIcon} alt = "defaultUserLogo"></img>
+                    <h2 id="welcomeGreeting">Hello, Bobby Infanto Valeinte!</h2>
                 </div>
-                <div id = "calendarTags">
-                    <h3>Tags</h3> 
+                <div id = "userCalendarTagsContainer">
+                    <h3 className = "sideBarCat">Tags</h3> 
+                    <hr className= "underline"></hr>
+                        <div id = "userTags">
+                            <ul><label><input type = "checkBox" className = "checkBox"></input>Holidays</label></ul>
+                            <ul><label><input type = "checkBox" className = "checkBox"></input>Holidays</label></ul>
+                            <ul><label><input type = "checkBox" className = "checkBox"></input>Holidays</label></ul>
+                        </div>
                     {/*TODO: insert the mapped array of all tags created by the user*/}
                     {/*No button to create tags. That functionality will be handle by the create event in which the user will be able to create a new tag for an event if they wish */}
                 </div>
                 <div id = "sideBarGroups">
-                    <h3>Groups</h3>
+                    <h3 className = "sideBarCat">Groups</h3>
+                    <hr className= "underline"></hr>
                     {/*TODO: insert the mapped array of all groups that a user belongs to created by the user (we need some special way to notifying user that he created this group*/}
                     {/*TODO:Create the form to create new group*/}
                 </div>
             </div>
             <div id = "calendarContainer">
-                <div id = "viewingOptionBar">
-                    <h1>{/*Insert the value of current month of what is being viewed*/}September 2022</h1>
-                    <button class = "viewOption">Previous</button> {/*FIXME: Needs event/handler. Needs a way for it to know whether in daily,weekly,or monthly */}
-                    <button class = "viewOption">Daily</button>{/*FIXME: Needs event/handler. Will change the state of the current viewing option. Default will be monthly */}
-                    <button class = "viewOption">Weekly</button>{/*FIXME: Needs event/handler. Will change the state of the current viewing option. Default will be monthly */}
-                    <button class = "viewOption">Monthly</button>{/*FIXME: Needs event/handler. Will change the state of the current viewing option. Default will be monthly */}
-                    <button class = "viewOption">Next</button>{/*FIXME: Needs event/handler. Needs a way for it to know whether in daily,weekly,or monthly */}
-                </div>
-                <div>
-                    
-                </div>
+                <UserCalendar userEvents = {userEvents}/>
             </div>
         </>
     )
