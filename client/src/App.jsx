@@ -4,7 +4,7 @@ import './App.css';
 import SignUpPage from "./components/SignUpPage"; //get rid of after testing
 import LoginPage from "./components/LoginPage"; //get rid of after test
 import MainPage from "./components/MainPage"; //get rid of after test
-import UserCalendar from "./components/UserCalendar";
+import GroupPage from "./components/GroupPage";
 
 
 function App() {
@@ -16,9 +16,9 @@ function App() {
         {/* <SignUpPage /> */}
         {/* <LoginPage /> */}
         <MainPage />
-        {/* <UserCalendar/> */}
       {/* </Route> */}
     {/*</Routes>*/}
+    {/* <GroupPage /> */}
 
     </>
   );

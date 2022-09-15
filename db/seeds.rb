@@ -42,7 +42,7 @@ end
 
 4.times do
     Group.create!(
-        title: Faker::Lorem.word,
+        title: Faker::Name.unique.name,
         group_picture:"https://protkd.com/wp-content/uploads/2017/04/default-image.jpg"
     )
 end

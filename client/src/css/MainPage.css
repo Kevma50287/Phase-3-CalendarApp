@@ -1,18 +1,9 @@
 div#header {
     width: 100%;
     height:4rem;
-    background-color:rgba(0, 0, 0, 0.664)
+    background-color:rgba(0, 0, 0, 0.821)
 }
-/* div#sideNavBar {
-    height: 100%;
-    width: 20rem;
-    background-color: yellow;
 
-}
-div#calendarContainer{
-    display: inline-block;
-    position: absolute;
-} */
 
 div#sideNavBar{
     display:flex;
@@ -38,3 +29,10 @@ div#calendarContainer{
 div.userCalendarContainer {
     width: 70%
 }
+h2#welcomeGreeting {
+    font-size: 2rem;
+    text-align: center;
+    text-overflow: ellipsis;
+}
+
+
