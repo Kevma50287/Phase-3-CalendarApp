@@ -37,7 +37,7 @@ function App() {
       <Route path = "login" element={<LoginPage onLogin={handleLogin}/>}/>
 
     </Routes> */}
-    <MainPage/>
+    {/* <MainPage/> */}
     {/* <LoginPage /> */}
     </>
   );
