@@ -26,32 +26,33 @@ const LoginPage = () => {
     }
     return(
     <>
-
-    <div id = "loginForm">
-        <form>
-            <img src = {loginIcon}></img>
-            <h3>Enter Credentials</h3>
-                <input
-                    type = "text"
-                    className = "userCredentialFormInputs"
-                    placeHolder = "Username"
-                    name = "Username"
-                    value = {loginCredentials.username}
-                    onChange = {handleLoginCredentials}
-                ></input>
-                <input
-                    type = "password"
-                    className = "userCredentialFormInputs"
-                    placeHolder = "Password"
-                    name = "password"
-                    value = {loginCredentials.password}
-                    onChange = {handleLoginCredentials}
-                ></input>
-                <button id = "loginBtn" onSubmit = {handleLogin}>Login</button> {/*TODO: Need event and event handler attached*/}
-                <h4><u>Create an account for free!</u></h4> {/*TODO: Need event and event handler to redirect to login page*/}
-        </form>
+    <div id = "loginBackground">
+        <div id = "loginFormContainer">
+            <form id = "loginForm">
+                <img src = {loginIcon} alt = "large icon"></img>
+                <h3>Enter Credentials</h3>
+                    <input
+                        type = "text"
+                        className = "userCredentialFormInputs"
+                        placeHolder = "Username"
+                        name = "Username"
+                        value = {loginCredentials.username}
+                        onChange = {handleLoginCredentials}
+                    ></input>
+                    <input
+                        type = "password"
+                        className = "userCredentialFormInputs"
+                        placeHolder = "Password"
+                        name = "password"
+                        value = {loginCredentials.password}
+                        onChange = {handleLoginCredentials}
+                    ></input>
+                    <button id = "loginBtn" onSubmit = {handleLogin}>Login</button> {/*TODO: Need event and event handler attached*/}
+                    <h4><u>Create an account for free!</u></h4> {/*TODO: Need event and event handler to redirect to login page*/}
+            </form>
+        </div>
     </div>
-    <div id = "appLogo">
+    <div id = "logoContainer">
         <img src = {largeLogo} alt = "logo"></img>
         <h1>DoWork</h1>
     </div>

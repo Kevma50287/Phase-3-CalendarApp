@@ -35,10 +35,8 @@ function App() {
       <Route path = "/" element={<WelcomePage/>}/>
       <Route path = "signup" element={<SignUpPage onSignup={handleLogin} />}/>
       <Route path = "login" element={<LoginPage onLogin={handleLogin}/>}/>
-        {/* <MainPage /> */}
-        {/* <UserCalendar/> */}
-    </Routes>
 
+    </Routes>
     </>
   );
 }

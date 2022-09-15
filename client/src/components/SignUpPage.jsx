@@ -43,10 +43,10 @@ const SignUpPage = ({onLogin}) => {
     return (
         <>
         <div id = "logoContainer">
-            <div id = "appLogo">
+            
                 <img src = {largeLogo} alt = "logo"></img>
                 <h1>DoWork</h1>
-            </div>
+            
         </div>
         <div id = "signUpBackground">
             <div id = "signUpFormContainer">
