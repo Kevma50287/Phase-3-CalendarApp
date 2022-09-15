@@ -42,16 +42,17 @@ h3 {
     font-size: 2.2rem;
     margin-bottom: 10px;
     margin-top: 10px;
+    cursor: pointer;
 }
 
 .userCredentialFormInputs{
     margin-top: 0.5rem;
     width: 12rem;
+    cursor: auto;
 }
 
 #loginBtn {
     width: 12.5rem;
-    height:2rem;
     margin-top: 1.5rem;
     background-color: rgb(19, 190, 19);
     color: white;
@@ -59,9 +60,11 @@ h3 {
     border-left:0;
     border-color: rgba(0, 0, 0, 0.426);
     font-weight: 600;
+    cursor: pointer;
 }
 form#loginForm>h4{
     color: grey;
+    cursor: pointer;
 }
 form#loginForm>img{
     padding-top: 2rem;
