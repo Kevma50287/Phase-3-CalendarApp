@@ -30,7 +30,7 @@ const MainPage = ({onLogout}) => {
                     <h5 id = "smallName">DoWork</h5>
                 </div>
                 <div id = "logoutBtnContainer">
-                    <button id = "logoutBtn">Logout</button>
+                    <button id = "logoutBtn" onClick={handleLogout}>Logout</button>
                 </div>
                 
             </div>
