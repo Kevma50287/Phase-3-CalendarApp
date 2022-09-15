@@ -1,4 +1,5 @@
 import { useState } from "react"
+import { useNavigate } from "react-router-dom"
 import "../css/LoginPage.css"
 import largeLogo from "../logos/largerIcon.png"
 import loginIcon from "../logos/user.png"
@@ -12,6 +13,10 @@ const LoginPage = ({onLogin}) => {
         password: ""
     }
     const[loginCredentials,setLoginCredentials] = useState (initialLoginState)
+    const navigate = useNavigate()
+    const navigateToSignup = () => {
+        navigate('/signup')
+    }
 //Handlers
     //TODO: create the login check
     const handleLogin = (e)=>{
@@ -28,6 +33,7 @@ const LoginPage = ({onLogin}) => {
                 console.log(user["error"])
             } else {
                 onLogin(user)
+                navigate("/")
             }
         }).catch(err=>console.log(err))
     }
@@ -64,7 +70,7 @@ const LoginPage = ({onLogin}) => {
                         onChange = {handleLoginCredentials}
                     ></input>
                     <button id = "loginBtn" type='submit'>Login</button> 
-                    <h4><u>Create an account for free!</u></h4> {/*TODO: Need event and event handler to redirect to login page*/}
+                    <h4 onClick={navigateToSignup}><u>Create an account for free!</u></h4>
             </form>
         </div>
     </div>
