@@ -6,8 +6,10 @@ class UsersController < ApplicationController
 
   # FIXME: Delete index later
   def index
-    render json: User.all
+    @users = User.all
+    render json: @users
   end
+
   #POST /users
   def create
     user = User.create(user_params)
