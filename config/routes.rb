@@ -17,10 +17,15 @@ Rails.application.routes.draw do
 
   resources :events
 
+
   post "/login", to: "sessions#create"
   delete "/logout", to: "sessions#destroy"
 
   
   post "/signup", to: "users#create"
   get "/me", to: "users#show"
+
+  #FIXME: To delete the routes below 
+  resources :tasks
+  get "/users", to: "users#index"
 end

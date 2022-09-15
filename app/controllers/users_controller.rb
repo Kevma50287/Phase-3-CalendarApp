@@ -4,6 +4,10 @@ class UsersController < ApplicationController
   before_action :set_user, only: %i[ show update destroy ]
   rescue_from ActiveRecord::RecordNotFound, with: :render_not_found
 
+  # FIXME: Delete index later
+  def index
+    render json: User.all
+  end
   #POST /users
   def create
     user = User.create(user_params)
