@@ -1,24 +1,27 @@
 import "../css/MainPage.css"
 import UserCalendar from "./UserCalendar"
 import { useState, useEffect } from "react"
+import loggedInUserIcon from "../logos/loggedinuser.png"
 const MainPage = () => {
     const[userEvents, setUserEvents] = useState ([])
 
 
-    // useEffect(()=>{
-    //     fetch("http://127.0.0.1:3000/users/10/events")
-    //     .then (r=>r.json())
-    //     .then (userEventData => setUserEvents(userEventData))
-    // },[])
+    useEffect(()=>{
+        fetch("http://127.0.0.1:3000/users/10/events")
+        .then (r=>r.json())
+        .then (userEventData => setUserEvents(userEventData))
+    },[])
 
     console.log(userEvents)
     return(
         <>
-            <div id = "header"></div>
+            <div id = "header">
+                <button>Logout</button>
+            </div>
             <div id="sideNavBar">
                 <div id = "sideWelcomeUser">
-                    <img src = ""></img>
-                    <h2 id="welcomeGreeting">Hello, Bobby Infanto Valeinte!</h2> {/*FIXME: need to insert the state holding user info */}
+                    <img src = {loggedInUserIcon} alt = "defaultUserLogo"></img>
+                    <h2 id="welcomeGreeting">Hello, Bobby Infanto Valeinte!</h2>
                 </div>
                 <div id = "calendarTags">
                     <h3 className = "sideBarCat">Tags</h3> 

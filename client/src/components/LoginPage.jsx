@@ -8,7 +8,7 @@ const LoginPage = () => {
 
 //States
     const initialLoginState = {
-        username: "",
+        Username: "",
         password: ""
     }
     const[loginCredentials,setLoginCredentials] = useState (initialLoginState)
@@ -24,6 +24,7 @@ const LoginPage = () => {
             [name]:value}
         )
     }
+    console.log(loginCredentials)
     return(
     <>
     <div id = "loginBackground">

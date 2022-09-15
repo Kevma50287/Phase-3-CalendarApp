@@ -31,12 +31,14 @@ function App() {
 
   return (
     <>
-    <Routes>
+    {/* <Routes>
       <Route path = "/" element={<WelcomePage/>}/>
       <Route path = "signup" element={<SignUpPage onSignup={handleLogin} />}/>
       <Route path = "login" element={<LoginPage onLogin={handleLogin}/>}/>
 
-    </Routes>
+    </Routes> */}
+    <MainPage/>
+    {/* <LoginPage /> */}
     </>
   );
 }
