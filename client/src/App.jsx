@@ -4,6 +4,7 @@ import './App.css';
 import SignUpPage from "./components/SignUpPage"; //get rid of after testing
 import LoginPage from "./components/LoginPage"; //get rid of after test
 import MainPage from "./components/MainPage"; //get rid of after test
+import UserCalendar from "./components/UserCalendar";
 
 
 function App() {
@@ -12,9 +13,10 @@ function App() {
     <Switch>
     <Route exact path = "/">
         {/* <WelcomePage/> */}
-        {/* <SignUpPage /> */}
+        <SignUpPage />
         {/* <LoginPage /> */}
-        <MainPage />
+        {/* <MainPage /> */}
+        {/* <UserCalendar/> */}
       </Route>
     </Switch>
 

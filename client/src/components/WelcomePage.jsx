@@ -9,7 +9,7 @@ const WelcomePage = () => {
     const [userCredentials, setUserCredentials] = useState([]) //FIXME: set the user login info here
 
 
-    const welcomeArr = ["Create your own calendar and logo.", "Collaborate with your team", "Track goals and meet deadlines"]
+    const welcomeArr = ["Create your own calendar and logo.", "Collaborate with your team.", "Track goals and meet deadlines."]
     const returnWelcomeArr = welcomeArr.map((element)=>(
         <div className = "listGroup">
             <div className = "checkMark"><img src = {check} alt = "check"></img></div>
@@ -19,8 +19,10 @@ const WelcomePage = () => {
 
 
     return (
-    <>
-        <div>
+    <>  
+
+            <div id = "shape"></div>
+        <div id = "logoContainer">
             <div id = "logoHolder" className = "logo">
                 <img className= "logoHolder" src = {logo} alt = "something" height= "100px"></img>
             </div>
@@ -44,13 +46,14 @@ const WelcomePage = () => {
             <div id = "welcomeList">
             {returnWelcomeArr}
             </div>
-            <div>
-                <button className = "signUpBtn">Sign Up</button> {/*TODO: Need handler to reroute to sign up page */}
+            <div id = "signOptionContainer">
+                <button className = "signUpBtn">Sign up today!</button> {/*TODO: Need handler to reroute to sign up page */}
             </div>
-            <div>
+            <div id = "loginOptionContainer">
                 <h4><u>Already signed up? Login</u></h4>{/*TODO: Need handler to reroute to login page */}
             </div>
         </div>
+
     </>
     )
 }
