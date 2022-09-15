@@ -11,28 +11,32 @@
       full_name: Faker::Name.unique.name,
       username: Faker::Name.unique.name,
       password: "happy",
+      password_confirmation: "happy",
       email: Faker::Internet.email,
       profile_picture: "https://protkd.com/wp-content/uploads/2017/04/default-image.jpg"
     )
 end
 
 10.times do
-    start_time = rand(0..1440)
+    start = Faker::Time.between_dates(from: Date.today, to: Date.today + 300, period: :all)
     Event.create!(
         title: Faker::Lorem.word,
         description: Faker::Lorem.sentence(word_count: 10),
-        date: Faker::Date.between(from: Date.today, to: 1.year.from_now),
-        start_time: start_time,
-        end_time: rand(start_time..1440)
+        start: start,
+        end: Faker::Time.between_dates(from: start, to: start + 3, period: :all),
+        allDay: true
     )
 end
 
-20.times do
-    start_time = rand(0..1440)
+10.times do
+    event_id = Event.all.sample().id
+    event_users = Event.find(event_id).users.map{|user| user.id}
+    user_id = User.pluck(:id).select{|id| event_users.exclude?(id)}.sample()
+    
     UserEvent.create!(
         isAdmin?: false,
-        user_id: User.all.sample().id,
-        event_id: Event.all.sample().id
+        user_id: user_id,
+        event_id: event_id
     )
 end
 
@@ -55,15 +59,17 @@ end
     )
 end
 
-10.times do
+15.times do
+    start = Faker::Time.between_dates(from: Date.today, to: Date.today + 300, period: :all)
     Task.create!(
         title: Faker::Lorem.word,
         description: Faker::Lorem.sentence(word_count: 10),
-        due_date: Faker::Date.between(from: Date.today, to: 1.year.from_now) 
+        start: start,
+        end: Faker::Time.between_dates(from: start, to: start + 3, period: :all)
     )
 end
 
-
+# For every task we need a Task joiner 
 Task.all.each do |task|
     array = GroupJoiner.all.map {|joiner| [joiner.group_id, joiner.user_id]}
     sample = array.sample()

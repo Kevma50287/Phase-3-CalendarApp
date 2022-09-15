@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  root 'users#index'
 
   resources :tasks_joiners
 
@@ -7,7 +6,7 @@ Rails.application.routes.draw do
 
   resources :group_joiners
 
-  resources :users do
+  resources :users, only:[:update, :show, :destroy, :create] do
     resources :calendars
     resources :groups
     resources :events
@@ -18,6 +17,15 @@ Rails.application.routes.draw do
 
   resources :events
 
+
   post "/login", to: "sessions#create"
   delete "/logout", to: "sessions#destroy"
+
+  
+  post "/signup", to: "users#create"
+  get "/me", to: "users#show"
+
+  #FIXME: To delete the routes below 
+  resources :tasks
+  get "/users", to: "users#index"
 end

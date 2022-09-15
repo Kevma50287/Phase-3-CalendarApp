@@ -13,4 +13,5 @@ class TasksJoiner < ApplicationRecord
             errors.add(:invalid_pair, "Cannot assign task to user. User is not in group")
         end
     end
+
 end

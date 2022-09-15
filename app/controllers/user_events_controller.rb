@@ -1,6 +1,7 @@
 class UserEventsController < ApplicationController
   before_action :set_user_event, only: %i[ show update destroy ]
   rescue_from ActiveRecord::RecordNotFound, with: :render_not_found
+  rescue_from ActiveRecord::RecordNotUnique, with: :render_not_unique
 
   # GET /user_events
   def index
@@ -53,5 +54,9 @@ class UserEventsController < ApplicationController
 
     def render_not_found
       render json: { error: "User event not found" }, status: 404
+    end
+
+    def render_not_unique
+      render json: { error: "This user is already attending this event" }, status: 404
     end
 end

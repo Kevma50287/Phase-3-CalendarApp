@@ -24,9 +24,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_13_161226) do
   create_table "events", force: :cascade do |t|
     t.string "title"
     t.string "description"
-    t.datetime "date"
-    t.integer "start_time"
-    t.integer "end_time"
+    t.datetime "start"
+    t.datetime "end"
+    t.boolean "allDay"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -50,7 +50,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_13_161226) do
   create_table "tasks", force: :cascade do |t|
     t.string "title"
     t.string "description"
-    t.string "due_date"
+    t.datetime "start"
+    t.datetime "end"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -61,6 +62,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_13_161226) do
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id", "group_id", "task_id"], name: "index_tasks_joiners_on_user_id_and_group_id_and_task_id", unique: true
   end
 
   create_table "user_events", force: :cascade do |t|
@@ -69,13 +71,13 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_13_161226) do
     t.integer "event_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id", "event_id"], name: "index_user_events_on_user_id_and_event_id", unique: true
   end
 
   create_table "users", force: :cascade do |t|
     t.string "full_name"
     t.string "username"
     t.string "email"
-    t.string "password"
     t.string "password_digest"
     t.string "profile_picture"
     t.datetime "created_at", null: false

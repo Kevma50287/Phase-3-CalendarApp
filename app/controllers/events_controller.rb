@@ -4,7 +4,12 @@ class EventsController < ApplicationController
 
   # GET /events
   def index
-    @events = Event.all
+    if session[:user_id]
+      user = User.find_by(id: session[:user_id])
+      @events = user.events
+    else
+      @events = Event.all
+    end
 
     render json: @events
   end
@@ -43,7 +48,12 @@ class EventsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_event
-      @event = Event.find(params[:id])
+      if session[:user_id]
+        user = User.find_by(id: session[:user_id])
+        @event = user.events[params[:id].to_i - 1]
+      else
+        @event = Event.find(params[:id])
+      end
     end
 
     # Only allow a list of trusted parameters through.
@@ -54,4 +64,5 @@ class EventsController < ApplicationController
     def render_not_found
       render json: { error: "Event not found" }, status: 404
     end
+
 end

@@ -54,4 +54,5 @@ class CalendarsController < ApplicationController
     def render_not_found
       render json: { error: "Calendar not found" }, status: 404
     end
+
 end

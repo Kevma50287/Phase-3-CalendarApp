@@ -3,7 +3,7 @@ class User < ApplicationRecord
     has_many :events, through: :user_events
     has_many :group_joiners, dependent: :destroy
     has_many :groups, through: :group_joiners
-    has_many :tasks_joiners, dependent: :nullify
+    has_many :tasks_joiners, dependent: :destroy
     has_many :tasks, through: :tasks_joiners
     has_many :calendars, dependent: :destroy
 
