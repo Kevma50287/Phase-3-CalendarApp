@@ -6,7 +6,6 @@ import interactionPlugin from "@fullcalendar/interaction";
 
 import "../css/UserCalendar.css";
 import { useState } from "react";
-import { useEffect } from "react";
 
 const UserCalendar = ({ userEvents, user, setUserEvents, group }) => {
   //STATE
