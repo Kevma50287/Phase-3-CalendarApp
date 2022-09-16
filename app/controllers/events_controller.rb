@@ -48,17 +48,12 @@ class EventsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_event
-      if session[:user_id]
-        user = User.find_by(id: session[:user_id])
-        @event = user.events[params[:id].to_i - 1]
-      else
         @event = Event.find(params[:id])
-      end
     end
 
     # Only allow a list of trusted parameters through.
     def event_params
-      params.require(:event).permit(:title, :description, :allDay, :start, :end)
+      params.require(:event).permit(:title, :description, :allDay, :start, :end, :id)
     end
 
     def render_not_found

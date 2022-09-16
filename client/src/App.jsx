@@ -41,7 +41,6 @@ function App() {
     navigate("/login");
   }
 
-
   return (
     <>
     <Routes>

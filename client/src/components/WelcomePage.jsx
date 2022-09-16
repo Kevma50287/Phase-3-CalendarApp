@@ -1,7 +1,6 @@
 import logo from "../logos/largerIcon.png"
 import check from "../logos/check.png"
 import "../css/WelcomePage.css"
-
 import { useState, useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 
