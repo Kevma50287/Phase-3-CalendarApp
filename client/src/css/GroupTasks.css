@@ -1,0 +1,83 @@
+
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #888; 
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+  }
+
+  button#collapsible {
+    background-color: rgba(8, 0, 255, 0.784);
+    color: white;
+    cursor: pointer;
+    padding: 18px;
+    width:865.406px ;
+    border-top: 0;
+    border-left:0;
+    border-right: 2px;
+    border-bottom: 2px;
+    border-color: white;
+    text-align: center;
+    outline: none;
+    font-size: 15px;
+    top:0;
+  }
+  
+  .active, .collapsible:hover {
+    background-color: #555;
+  }
+
+  #groupTaskContainerHide {
+    display: none;
+    overflow: hidden;
+  }
+
+
+div#groupTaskContainerShow {
+    height: 240px;
+    max-height: 240px;
+    width: 91vh;
+    max-width: 100vh;
+    overflow: auto;
+    background-image: linear-gradient(to bottom, rgba(8, 0, 255, 0.784) 0%,rgba(0, 0, 255, 0.522) 45%, rgba(97, 1, 252, 0.374) 75%,rgba(97, 1, 252, 0.256) 95%, white 100%) ;
+}
+div.taskCard {
+    display: inline-block;
+    width: 280px;
+    height: 230px;
+    max-height: 230px;
+    overflow-y: auto;
+    background-color: white;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-left: 4px;
+}
+
+form#taskForm{
+  margin-top: 5px;
+  display: flex;
+  flex-direction: column;
+}
+div.task{
+  margin-top: 5px;
+  display: flex;
+  flex-direction: column;
+  width: 270px;
+  max-width: 270px;
+  overflow-wrap: break-word;
+  height: 225px;
+  max-height: 225px;
+}

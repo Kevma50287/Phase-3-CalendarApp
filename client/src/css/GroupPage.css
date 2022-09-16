@@ -1,0 +1,68 @@
+div#header {
+    width: 100%;
+    height:10%;
+    background-color:rgba(0, 0, 0, 0.821);
+}
+#smallLogoContainer, #smallNameContainer, #logoutBtnContainer{
+    display: inline-block;
+}
+#smallNameContainer {
+    height: 64px;
+    width:200px;
+
+}
+h5#smallName{
+    position:absolute;
+    top:0px;
+    font-size: 2rem;
+    margin-top: 1.5rem;
+    color:white
+    
+}
+div#smallLogoContainer {
+    margin-left: 5%;
+}
+img#smallLogo {
+    top: 0;
+}
+div#logoutBtnContainer{
+    position:absolute;
+    width:fit-content;
+    height: 4.5rem;
+    top:1.5rem;
+    right:5%;
+}
+
+
+div#groupCalendarContainer{
+    position: absolute;
+    left: 20%;
+    height: 90%;
+    max-height: 90%;
+    overflow: auto;
+    width:80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+div.groupCalendarContainer {
+    width: 90%
+}
+
+div.teamMemberContainer{
+    flex-direction: column;
+    text-align: left;
+    margin-left: 5%;
+    color: white;
+}
+div.groupEvents{
+    flex-direction: column;
+    text-align: left;
+    margin-left: 18%;
+    color: white; 
+}
+
+
+/* FIXME: NEED CSS FOR THE GROUP CHECKBOX */
