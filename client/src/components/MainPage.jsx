@@ -9,6 +9,7 @@ const MainPage = ({onLogout, user}) => {
     const navigate = useNavigate()
     const[userEvents, setUserEvents] = useState ([])
     const[userGroups, setUserGroups] = useState ([])
+    // TODO: Add Tasks
     const[userTasks, setUserTasks] = useState ([])
     const { group_id } = useParams()
     useEffect(()=>{
