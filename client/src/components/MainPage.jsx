@@ -4,7 +4,6 @@ import { useState, useEffect } from "react"
 import loggedInUserIcon from "../logos/loggedinuser.png"
 import smallerLogo from "../logos/smallerLogo.png"
 import { Outlet, useNavigate, useParams } from "react-router-dom"
-import { Button } from "bootstrap"
 const MainPage = ({onLogout, user}) => {
     const navigate = useNavigate()
     const[userEvents, setUserEvents] = useState ([])
