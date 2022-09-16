@@ -48,10 +48,10 @@ function App() {
       <Route path = "/signup" element={<SignUpPage onSignup={handleLogin} />}/>
       <Route path = "/login" element={<LoginPage onLogin={handleLogin}/>}/>
       <Route path = '/users' element= {<MainPage onLogout={handleLogout} user={user}/>} >
-          <Route path = ":group_id" element={<GroupTasks user={user}/>}/>
+          <Route path = ":group_id" element={<GroupTasks user={user} onLogout={handleLogout}/>}/>
       </Route>
     </Routes>
-    {/* <GroupPage /> */}
+
     </>
   );
 }

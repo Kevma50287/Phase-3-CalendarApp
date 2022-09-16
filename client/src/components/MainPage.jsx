@@ -4,7 +4,6 @@ import { useState, useEffect } from "react"
 import loggedInUserIcon from "../logos/loggedinuser.png"
 import smallerLogo from "../logos/smallerLogo.png"
 import { Outlet, useNavigate, useParams } from "react-router-dom"
-import { Button } from "bootstrap"
 const MainPage = ({onLogout, user}) => {
     const navigate = useNavigate()
     const[userEvents, setUserEvents] = useState ([])
@@ -99,7 +98,7 @@ const MainPage = ({onLogout, user}) => {
             </div>
             <div>
                 {/* TODO: This Outlet is where GroupTasks will appear */}
-                <Outlet />
+                <Outlet handleLogout ={handleLogout}/>
             </div>
             <div id = "calendarContainer">
                 <UserCalendar userEvents = {userEvents} user={user} setUserEvents={setUserEvents} group={group_id}  />
