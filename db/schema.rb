@@ -37,6 +37,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_16_142648) do
     t.boolean "isAdmin?"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["group_id", "event_id"], name: "index_group_events_on_group_id_and_event_id", unique: true
   end
 
   create_table "group_joiners", force: :cascade do |t|

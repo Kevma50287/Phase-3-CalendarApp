@@ -4,7 +4,10 @@ class EventsController < ApplicationController
 
   # GET /events
   def index
-    if session[:user_id]
+    if params[:group_id]
+      group = Group.find(params[:group_id])
+      @events = group.events
+    elsif session[:user_id]
       user = User.find_by(id: session[:user_id])
       @events = user.events
     else

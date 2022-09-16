@@ -48,12 +48,17 @@ class GroupsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_group
-      if session[:user_id]
-        user = User.find_by(id: session[:user_id])
-        @group = user.groups[params[:id].to_i - 1]
+      # if session[:user_id]
+      #   user = User.find_by(id: session[:user_id])
+      #   @group = user.groups[params[:id].to_i - 1]
+      # else
+      if params[:group_id]
+        @group = Group.find(params[:group_id])
       else
         @group = Group.find(params[:id])
       end
+
+      # end
     end
 
     # Only allow a list of trusted parameters through.

@@ -7,5 +7,8 @@ class CreateGroupEvents < ActiveRecord::Migration[7.0]
 
       t.timestamps
     end
+
+    #All groups attending an event should be unique
+    add_index :group_events, [:group_id, :event_id], unique: true
   end
 end

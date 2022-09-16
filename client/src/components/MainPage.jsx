@@ -4,13 +4,13 @@ import { useState, useEffect } from "react"
 import loggedInUserIcon from "../logos/loggedinuser.png"
 import smallerLogo from "../logos/smallerLogo.png"
 import { Outlet, useNavigate, useParams } from "react-router-dom"
+import { Button } from "bootstrap"
 const MainPage = ({onLogout, user}) => {
     const navigate = useNavigate()
     const[userEvents, setUserEvents] = useState ([])
     const[userGroups, setUserGroups] = useState ([])
     const[userTasks, setUserTasks] = useState ([])
     const { group_id } = useParams()
-    console.log(group_id)
     useEffect(()=>{
         fetch("/users/1/events")
         .then (r=>r.json())
@@ -27,14 +27,17 @@ const MainPage = ({onLogout, user}) => {
 
     useEffect(() => {
         const paramID = parseInt(group_id?.split("_").pop())
-        fetch(`/groups/${paramID}/events`)
-        .then (r=>r.json())
-        .then (userEventData => setUserEvents(userEventData))
-    }, [])
-    
+        if (paramID){
+            fetch(`/groups/${paramID}/events`)
+            .then (r=>r.json())
+            .then (userEventData => {
+                console.log(userEventData)
+                setUserEvents(userEventData)
+            })
+        }
+    }, [group_id])
 
-
-    console.log(userEvents, userGroups, userTasks)
+    console.log(userEvents)
 
     const handleLogout = (e) => {
         fetch('/logout', {
@@ -81,16 +84,24 @@ const MainPage = ({onLogout, user}) => {
                     {/*TODO:Create the form to create new group*/}
                     <div className = "userGroups"> {/*FIXME: FIX THE CLASS NAME AND ADD CSS */}
                         {/*each tag should follow the format below */}
+                        <button className="" >Join Group</button>
+                        <button className="" >Create Group</button>
                         {GroupList}
                     </div>
                 </div>
             </div>
-            {/* TODO: This is where GroupTasks will appear */}
+            {/* TODO: Add group functionality */}
+            <div id="groupFormContainer">
+                <form id="groupForm">
+
+                </form>
+            </div>
             <div>
+                {/* TODO: This Outlet is where GroupTasks will appear */}
                 <Outlet />
             </div>
             <div id = "calendarContainer">
-                <UserCalendar userEvents = {userEvents} user={user} setUserEvents={setUserEvents} />
+                <UserCalendar userEvents = {userEvents} user={user} setUserEvents={setUserEvents} group={group_id}  />
             </div>
         </>
     )

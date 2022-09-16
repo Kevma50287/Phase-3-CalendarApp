@@ -8,7 +8,7 @@ import "../css/UserCalendar.css";
 import { useState } from "react";
 import { useEffect } from "react";
 
-const UserCalendar = ({ userEvents, user, setUserEvents }) => {
+const UserCalendar = ({ userEvents, user, setUserEvents, group }) => {
   //STATE
   const initialState = {
     id: "",
@@ -22,7 +22,13 @@ const UserCalendar = ({ userEvents, user, setUserEvents }) => {
   };
   const [toggleForm, setToggleForm] = useState(false);
   const [eventDetails, setEventDetails] = useState(initialState);
-
+  const groupID = () => {
+    if (group) {
+      return parseInt(group.split("_").pop())
+    } else {
+      return false
+    }
+  }
   // HANDLERS
   const handleAddEvent = (e) => {
     e.preventDefault();
@@ -44,15 +50,27 @@ const UserCalendar = ({ userEvents, user, setUserEvents }) => {
       .then((r) => r.json())
       .then((event) => {
         setUserEvents([...userEvents, event]);
-        fetch("/user_events", {
+        let url = ""
+        let joinerObj = {}
+        if (group){
+          url = "/group_events"
+          joinerObj = {
+            group_id: groupID(),
+            event_id: event.id
+          }
+        } else {
+          url = "/user_events"
+          joinerObj = {
+            user_id: user.id,
+            event_id: event.id
+          }
+        }
+        fetch(url, {
           method: "POST",
           headers: {
             "Content-type": "application/json",
           },
-          body: JSON.stringify({
-            user_id: user.id,
-            event_id: event.id,
-          }),
+          body: JSON.stringify(joinerObj),
         })
           .then((r) => r.json().then((d) => console.log(d)))
           .catch((err) => console.log(err));
@@ -66,6 +84,7 @@ const UserCalendar = ({ userEvents, user, setUserEvents }) => {
 
   const handleEventClick = (e) => {
     const editEventObj = e.event;
+    console.log(editEventObj)
     const startDateAndTimeArray = e.event.startStr.split("T");
     const endDateAndTimeArray = e.event.endStr.split("T");
     setEventDetails({
@@ -166,6 +185,7 @@ const UserCalendar = ({ userEvents, user, setUserEvents }) => {
       end: `${eventDetails.endDate}T${eventDetails.endTime}`,
       allDay: eventDetails.allDay,
     };
+    
     fetch(`/events/${eventDetails.id}`, {
       method: "PATCH",
       headers: {
@@ -193,7 +213,14 @@ const UserCalendar = ({ userEvents, user, setUserEvents }) => {
   };
 
   const handleDelete = (e) => {
-    fetch(`/user_events/${eventDetails.id}`, {
+    let url = ""
+    // FIXME:Currently just deletes the event. Need to delete the joiner first
+    if (group){
+      url = `/groups/${groupID()}/events/${eventDetails.id}`
+    } else {
+      url = `/users/1/events/${eventDetails.id}`
+    }
+    fetch(url, {
       method: "DELETE",
     })
       .then((r) => r.json())

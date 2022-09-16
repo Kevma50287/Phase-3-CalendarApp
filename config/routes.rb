@@ -17,12 +17,18 @@ Rails.application.routes.draw do
     resources :groups
     resources :events
     resources :tasks
+    resources :tasks_joiners
+    resources :user_events
+    resources :group_joiners
   end
 
   resources :groups do
     resources :events
     resources :tasks
     resources :users
+    resources :tasks_joiners
+    resources :group_events
+    resources :group_joiners
   end
 
   resources :events do
