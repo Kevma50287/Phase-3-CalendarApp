@@ -71,9 +71,13 @@ const UserCalendar = ({ userEvents, user, setUserEvents, group }) => {
           },
           body: JSON.stringify(joinerObj),
         })
-          .then((r) => r.json().then((d) => console.log(d)))
+          .then((r) => r.json().then((d) => {
+            setToggleForm(false)
+            setEventDetails(initialState)
+          }
+          ))
           .catch((err) => console.log(err));
-      });
+    });
   };
 
   const handleEventDetails = (e) => {
