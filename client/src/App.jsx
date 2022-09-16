@@ -24,7 +24,9 @@ function App() {
       if (user["error"]){
         console.log(user)
       } else {
+        navigate('/users')
         setUser(user)
+        //if user is in session we go to /users
       }
     })
     .catch(err => console.log(err))
@@ -38,8 +40,6 @@ function App() {
     setUser(null);
   }
 
-  //if user is in session we go to /users
-  user || navigate('/users')
 
   return (
     <>
@@ -48,9 +48,7 @@ function App() {
       <Route path = "/signup" element={<SignUpPage onSignup={handleLogin} />}/>
       <Route path = "/login" element={<LoginPage onLogin={handleLogin}/>}/>
       <Route path = '/users' element= {<MainPage onLogout={handleLogout}/>} >
-        <Route path = '/group'>
           <Route path = ":group_id" element={<GroupTasks/>}/>
-        </Route>
       </Route>
     </Routes>
     </>

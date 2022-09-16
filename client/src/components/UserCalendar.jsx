@@ -5,8 +5,11 @@ import timeGridPlugin from '@fullcalendar/timegrid'
 import interactionPlugin from '@fullcalendar/interaction'
 
 import "../css/UserCalendar.css"
+import { useState } from 'react'
 
 const UserCalendar = ({userEvents}) => {
+    const [toggleForm, setToggleForm] = useState(false)
+    console.log(toggleForm)
 
     return (
         <div className = "userCalendarContainer">
@@ -16,8 +19,8 @@ const UserCalendar = ({userEvents}) => {
                 plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
                 headerToolbar={{
                     left: 'prev,next today',
-                    center: 'title, addEventButton',
-                    right: 'dayGridMonth,timeGridWeek,timeGridDay'
+                    center: 'title',
+                    right: 'addEventButton,dayGridMonth,timeGridWeek,timeGridDay'
                 }}
                 initialView="dayGridMonth"
                 events = {userEvents}
@@ -29,9 +32,7 @@ const UserCalendar = ({userEvents}) => {
                     {
                         addEventButton: {
                             text: 'Add Event',
-                            click: () => {
-                                
-                            }
+                            click: () => setToggleForm(e => !e)
                         }
                     }
                 }
