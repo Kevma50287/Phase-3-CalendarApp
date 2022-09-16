@@ -40,6 +40,7 @@ end
     )
 end
 
+
 4.times do
     Group.create!(
         title: Faker::Name.unique.name,
@@ -56,6 +57,18 @@ end
         isAdmin?: false,
         user_id: user_id,
         group_id: group_id
+    )
+end
+
+10.times do
+    event_id = Event.all.sample().id
+    event_groups = Event.find(event_id).groups.map{|group| group.id}
+    group_id = Group.pluck(:id).select{|id| event_groups.exclude?(id)}.sample()
+    
+    GroupEvent.create!(
+        isAdmin?: false,
+        group_id: group_id,
+        event_id: event_id
     )
 end
 

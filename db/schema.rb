@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_09_13_161226) do
+ActiveRecord::Schema[7.0].define(version: 2022_09_16_142648) do
   create_table "calendars", force: :cascade do |t|
     t.integer "user_id"
     t.string "font"
@@ -27,6 +27,14 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_13_161226) do
     t.datetime "start"
     t.datetime "end"
     t.boolean "allDay"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "group_events", force: :cascade do |t|
+    t.integer "group_id"
+    t.integer "event_id"
+    t.boolean "isAdmin?"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

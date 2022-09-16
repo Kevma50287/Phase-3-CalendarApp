@@ -3,12 +3,14 @@ import UserCalendar from "./UserCalendar"
 import { useState, useEffect } from "react"
 import loggedInUserIcon from "../logos/loggedinuser.png"
 import smallerLogo from "../logos/smallerLogo.png"
-import { Outlet } from "react-router-dom"
+import { Outlet, useNavigate, useParams } from "react-router-dom"
 const MainPage = ({onLogout, user}) => {
+    const navigate = useNavigate()
     const[userEvents, setUserEvents] = useState ([])
     const[userGroups, setUserGroups] = useState ([])
     const[userTasks, setUserTasks] = useState ([])
-
+    const { group_id } = useParams()
+    console.log(group_id)
     useEffect(()=>{
         fetch("/users/1/events")
         .then (r=>r.json())
@@ -23,6 +25,14 @@ const MainPage = ({onLogout, user}) => {
         .then (userTaskData => setUserTasks(userTaskData))
     },[])
 
+    useEffect(() => {
+        const paramID = parseInt(group_id?.split("_").pop())
+        fetch(`/groups/${paramID}/events`)
+        .then (r=>r.json())
+        .then (userEventData => setUserEvents(userEventData))
+    }, [])
+    
+
 
     console.log(userEvents, userGroups, userTasks)
 
@@ -31,6 +41,8 @@ const MainPage = ({onLogout, user}) => {
             method: "DELETE",
         }).then(()=>onLogout())
     }
+
+    const GroupList = userGroups.map(item => <li className = "checkBox groupList" onClick={() => navigate(`/users/${item.title}_${item.id}`)}>{item.title}</li>)
 
     return(
         <>
@@ -69,9 +81,7 @@ const MainPage = ({onLogout, user}) => {
                     {/*TODO:Create the form to create new group*/}
                     <div className = "userGroups"> {/*FIXME: FIX THE CLASS NAME AND ADD CSS */}
                         {/*each tag should follow the format below */}
-                        <li className = "checkBox groupList">Holidays</li>
-                        <li className = "checkBox groupList">School</li>
-                        <li className = "checkBox groupList">Work</li>
+                        {GroupList}
                     </div>
                 </div>
             </div>
