@@ -95,19 +95,26 @@ h3.sideBarCat {
 hr.underline{
     width: 70%
 }
-div#userTags{
+div.userTags{
     flex-direction: column;
     text-align: left;
     margin-left: 5%;
     color: white;
 }
+div.userGroups{
+    flex-direction: column;
+    text-align: left;
+    margin-left: 18%;
+    color: white; 
+}
+
 
 .checkBox{
     cursor: pointer;
     margin-top: 10px;
     margin-bottom: 5px;
 }
-input.checkBoxInput {
+input.checkBoxInput, .groupList {
     cursor: pointer
 }
 
