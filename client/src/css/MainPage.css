@@ -1,6 +1,6 @@
 div#header {
     width: 100%;
-    height:4.5rem;
+    height:10%;
     background-color:rgba(0, 0, 0, 0.821);
 }
 #smallLogoContainer, #smallNameContainer, #logoutBtnContainer{
@@ -37,16 +37,17 @@ div#sideNavBar{
     display:flex;
     position: absolute;
     flex-direction: column;
-    background-image: linear-gradient(to bottom, rgba(8, 0, 255, 0.784) 0%,rgba(0, 0, 255, 0.522) 45%, rgba(97, 1, 252, 0.374) 75%,rgba(97, 1, 252, 0.256) 95%, white 100%) ;
-    height: 100%;
+    background-image: linear-gradient(to bottom, rgba(8, 0, 255, 0.784) 0%,rgba(0, 0, 255, 0.522) 45%, rgba(97, 1, 252, 0.374) 75%,rgba(97, 1, 252, 0.256) 95%) ;
+    height: 93%;
+    max-height: 93%;
     width: 20%;
 }
 
 div#calendarContainer{
     position: absolute;
     left: 20%;
-    height: 100%;
-    max-height: 100%;
+    height: 90%;
+    max-height: 90%;
     overflow: auto;
     width:80%;
     display: flex;

@@ -4,7 +4,7 @@ import { useState, useEffect } from "react"
 import loggedInUserIcon from "../logos/loggedinuser.png"
 import smallerLogo from "../logos/smallerLogo.png"
 import { Outlet } from "react-router-dom"
-const MainPage = ({onLogout, user}) => {
+const MainPage = ({onLogout}) => {
     const[userEvents, setUserEvents] = useState ([])
 
     useEffect(()=>{
@@ -69,7 +69,7 @@ const MainPage = ({onLogout, user}) => {
                 <Outlet />
             </div>
             <div id = "calendarContainer">
-                <UserCalendar userEvents = {userEvents} user={user} setUserEvents={setUserEvents} />
+                <UserCalendar userEvents = {userEvents}/>
             </div>
         </>
     )
