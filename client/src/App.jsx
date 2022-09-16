@@ -4,7 +4,8 @@ import './App.css';
 import SignUpPage from "./components/SignUpPage"; //get rid of after testing
 import LoginPage from "./components/LoginPage"; //get rid of after test
 import MainPage from "./components/MainPage"; //get rid of after test
-import UserCalendar from "./components/UserCalendar";
+import UserCalendar from "./components/UserCalendar"; //get rid of after test
+import GroupPage from "./components/GroupPage";
 import { useState } from "react";
 import { useEffect } from "react";
 
@@ -39,11 +40,12 @@ function App() {
 
   return (
     <>
-    <Routes>
-      <Route path = "/" element={user ? <MainPage onLogout={handleLogout}/> : <WelcomePage/>}/>
-      <Route path = "signup" element={<SignUpPage onSignup={handleLogin} />}/>
-      <Route path = "login" element={<LoginPage onLogin={handleLogin}/>}/>
-    </Routes>
+    {/* <Routes> */}
+      {/* <Route path = "/" element={user ? <MainPage onLogout={handleLogout}/> : <WelcomePage/>}/> */}
+      {/* <Route path = "signup" element={<SignUpPage onSignup={handleLogin} />}/> */}
+      {/* <Route path = "login" element={<LoginPage onLogin={handleLogin}/>}/> */}
+    {/* </Routes> */}
+    <GroupPage />
     </>
   );
 }

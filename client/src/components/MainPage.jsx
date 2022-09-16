@@ -32,7 +32,6 @@ const MainPage = ({onLogout}) => {
                 <div id = "logoutBtnContainer">
                     <button id = "logoutBtn" onClick={handleLogout}>Logout</button>
                 </div>
-                
             </div>
             <div id="sideNavBar">
                 <div id = "sideWelcomeUser">
@@ -43,13 +42,13 @@ const MainPage = ({onLogout}) => {
                     <h3 className = "sideBarCat">Tags</h3> 
                     <hr className= "underline"></hr>
                         <div id = "userTags">
+                            {/*TODO: insert the mapped array of all tags created by the user*/}
+                            {/*No button to create tags. That functionality will be handle by the create event in which the user will be able to create a new tag for an event if they wish */}
                             {/*each tag should follow the format below */}
                             <ul className = "checkBox"><label><input type = "checkBox" className = "checkBoxInput"></input>Holidays</label></ul>
                             <ul className = "checkBox"><label><input type = "checkBox" className = "checkBoxInput"></input>School</label></ul>
                             <ul className = "checkBox"><label><input type = "checkBox" className = "checkBoxInput"></input>Work</label></ul>
                         </div>
-                    {/*TODO: insert the mapped array of all tags created by the user*/}
-                    {/*No button to create tags. That functionality will be handle by the create event in which the user will be able to create a new tag for an event if they wish */}
                 </div>
                 <div id = "sideBarGroups">
                     <h3 className = "sideBarCat">Groups</h3>
@@ -57,11 +56,11 @@ const MainPage = ({onLogout}) => {
                     {/*TODO: insert the mapped array of all groups that a user belongs to created by the user (we need some special way to notifying user that he created this group*/}
                     {/*TODO:Create the form to create new group*/}
                     <div id = "userTags"> {/*FIXME: FIX THE CLASS NAME AND ADD CSS */}
-                            {/*each tag should follow the format below */}
-                            <ul className = "checkBox"><label><input type = "checkBox" className = "checkBoxInput"></input>Holidays</label></ul>
-                            <ul className = "checkBox"><label><input type = "checkBox" className = "checkBoxInput"></input>School</label></ul>
-                            <ul className = "checkBox"><label><input type = "checkBox" className = "checkBoxInput"></input>Work</label></ul>
-                        </div>
+                        {/*each tag should follow the format below */}
+                        <ul className = "checkBox"><label><input type = "checkBox" className = "checkBoxInput"></input>Holidays</label></ul>
+                        <ul className = "checkBox"><label><input type = "checkBox" className = "checkBoxInput"></input>School</label></ul>
+                        <ul className = "checkBox"><label><input type = "checkBox" className = "checkBoxInput"></input>Work</label></ul>
+                    </div>
                 </div>
             </div>
             <div id = "calendarContainer">
