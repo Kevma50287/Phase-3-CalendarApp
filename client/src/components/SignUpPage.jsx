@@ -43,7 +43,10 @@ const SignUpPage = ({onSignup}) => {
                 r.json().then(user => onSignup(user))
                 navigate('/users')
             } else {
-                r.json().then(err => setErrors(err['error']))
+                r.json().then(err => {
+                    setErrors(err['error'])
+                    alert(err['error'])
+                })
             }
         })
         .catch(err => {

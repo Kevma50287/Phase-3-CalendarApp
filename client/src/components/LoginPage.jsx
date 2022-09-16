@@ -30,7 +30,7 @@ const LoginPage = ({onLogin}) => {
         }).then(r=>r.json())
         .then(user => {
             if (user["error"]){
-                console.log(user["error"])
+                alert(user["error"])
             } else {
                 onLogin(user)
                 navigate("/users")
