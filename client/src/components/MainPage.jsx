@@ -6,14 +6,25 @@ import smallerLogo from "../logos/smallerLogo.png"
 import { Outlet } from "react-router-dom"
 const MainPage = ({onLogout, user}) => {
     const[userEvents, setUserEvents] = useState ([])
+    const[userGroups, setUserGroups] = useState ([])
+    const[userTasks, setUserTasks] = useState ([])
 
     useEffect(()=>{
         fetch("/users/1/events")
         .then (r=>r.json())
         .then (userEventData => setUserEvents(userEventData))
+
+        fetch("/users/1/groups")
+        .then (r=>r.json())
+        .then (userGroupData => setUserGroups(userGroupData))
+
+        fetch("/users/1/tasks")
+        .then (r=>r.json())
+        .then (userTaskData => setUserTasks(userTaskData))
     },[])
 
-    console.log(userEvents)
+
+    console.log(userEvents, userGroups, userTasks)
 
     const handleLogout = (e) => {
         fetch('/logout', {
