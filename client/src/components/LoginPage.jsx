@@ -33,7 +33,7 @@ const LoginPage = ({onLogin}) => {
                 console.log(user["error"])
             } else {
                 onLogin(user)
-                navigate("/")
+                navigate("/users")
             }
         }).catch(err=>console.log(err))
     }

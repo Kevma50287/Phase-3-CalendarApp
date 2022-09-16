@@ -16,7 +16,7 @@ const UserCalendar = ({userEvents}) => {
                 plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
                 headerToolbar={{
                     left: 'prev,next today',
-                    center: 'title',
+                    center: 'title, addEventButton',
                     right: 'dayGridMonth,timeGridWeek,timeGridDay'
                 }}
                 initialView="dayGridMonth"
@@ -25,6 +25,17 @@ const UserCalendar = ({userEvents}) => {
                 selectable={true}
                 selectMirror={true}
                 dayMaxEvents={true}
+                customButtons={
+                    {
+                        addEventButton: {
+                            text: 'Add Event',
+                            click: () => {
+                                
+                            }
+                        }
+                    }
+                }
+                
             />
         </div>
     
