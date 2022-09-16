@@ -42,7 +42,7 @@ const MainPage = ({onLogout, user}) => {
                 <div id = "userCalendarTagsContainer">
                     <h3 className = "sideBarCat">Tags</h3> 
                     <hr className= "underline"></hr>
-                        <div id = "userTags">
+                        <div className = "userTags">
                             {/*TODO: insert the mapped array of all tags created by the user*/}
                             {/*No button to create tags. That functionality will be handle by the create event in which the user will be able to create a new tag for an event if they wish */}
                             {/*each tag should follow the format below */}
@@ -56,11 +56,11 @@ const MainPage = ({onLogout, user}) => {
                     <hr className= "underline"></hr>
                     {/*TODO: insert the mapped array of all groups that a user belongs to created by the user (we need some special way to notifying user that he created this group*/}
                     {/*TODO:Create the form to create new group*/}
-                    <div id = "userTags"> {/*FIXME: FIX THE CLASS NAME AND ADD CSS */}
+                    <div className = "userGroups"> {/*FIXME: FIX THE CLASS NAME AND ADD CSS */}
                         {/*each tag should follow the format below */}
-                        <ul className = "checkBox"><label><input type = "checkBox" className = "checkBoxInput"></input>Holidays</label></ul>
-                        <ul className = "checkBox"><label><input type = "checkBox" className = "checkBoxInput"></input>School</label></ul>
-                        <ul className = "checkBox"><label><input type = "checkBox" className = "checkBoxInput"></input>Work</label></ul>
+                        <li className = "checkBox groupList">Holidays</li>
+                        <li className = "checkBox groupList">School</li>
+                        <li className = "checkBox groupList">Work</li>
                     </div>
                 </div>
             </div>
