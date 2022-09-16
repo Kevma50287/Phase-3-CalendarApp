@@ -7,7 +7,7 @@ import interactionPlugin from '@fullcalendar/interaction'
 import "../css/UserCalendar.css"
 import { useState } from 'react'
 
-const UserCalendar = ({userEvents}) => {
+const UserCalendar = ({userEvents, user, setUserEvents}) => {
     //STATE
     const initialState = {
         title:"",
@@ -31,12 +31,27 @@ const UserCalendar = ({userEvents}) => {
             end: `${eventDetails.endDate}T${eventDetails.endTime}`,
             allDay: eventDetails.allDay
         }
+
         fetch("/events", {
             method:"POST",
             headers: {
                 'Content-type': 'application/json'
             },
             body: JSON.stringify(eventObj)
+        }).then(r=>r.json())
+        .then(event => {
+            setUserEvents([...userEvents, event])
+            fetch("/user_events", {
+                method:"POST",
+                headers: {
+                    'Content-type': 'application/json'
+                },
+                body: JSON.stringify({
+                    user_id: user.id,
+                    event_id: event.id
+                })
+            }).then(r=>r.json().then(d => console.log(d)))
+            .catch(err => console.log(err))
         })
 
     }

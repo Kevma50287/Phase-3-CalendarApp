@@ -37,7 +37,8 @@ function App() {
   }
 
   function handleLogout() {
-    setUser(null);
+    setUser(null)
+    navigate("/login");
   }
 
 
@@ -47,8 +48,8 @@ function App() {
       <Route path = "/" element= {<WelcomePage/>}/>
       <Route path = "/signup" element={<SignUpPage onSignup={handleLogin} />}/>
       <Route path = "/login" element={<LoginPage onLogin={handleLogin}/>}/>
-      <Route path = '/users' element= {<MainPage onLogout={handleLogout}/>} >
-          <Route path = ":group_id" element={<GroupTasks/>}/>
+      <Route path = '/users' element= {<MainPage onLogout={handleLogout} user={user}/>} >
+          <Route path = ":group_id" element={<GroupTasks user={user}/>}/>
       </Route>
     </Routes>
     </>
