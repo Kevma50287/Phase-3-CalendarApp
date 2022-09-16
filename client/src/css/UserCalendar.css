@@ -10,3 +10,90 @@ html, body {
     margin: 40px auto;
     padding-top: 1px;
 }
+
+#eventFormModal{
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.258);
+    z-index: 10;
+    padding-left: 40%;
+    padding-right: 40%;
+    padding-top: 10%;
+    
+}
+
+#EventFormContainer{
+    background-color: white;
+    height: 50%;
+    width: 20%;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#eventForm{
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+}
+#eventForm>h3{
+    text-align: center;
+    margin-top: -2rem;
+    padding-bottom: 2rem;
+}
+.eventDetailsFormInputs{
+    width: 200px;
+}
+div.inputLabelContainer {
+    margin-bottom: 4px;
+}
+div.labelContainer, div.inputContainer{
+    display:inline-block
+}
+
+div.labelContainer {
+    width: 80px;
+}
+label#description{
+    position: absolute;
+    margin-top: -2.5rem;
+}
+
+button#EventBtn{
+    display:flex;
+    margin: 0 auto;
+    padding-left: 20%;
+    padding-right: 15%;
+    background-color: rgb(19, 190, 19);
+    color: white;
+    border-top: 0;
+    border-left:0;
+    border-color: rgba(0, 0, 0, 0.426);
+    font-weight: 600;
+    cursor: pointer;
+    height: 1.5rem;
+}
+textarea {
+    overflow: auto;
+    overflow-wrap: break-word;
+    height: 50px;
+}
+#delEventBtn{
+    background-color: red;
+    color: white;
+    border-top: 0;
+    border-left:0;
+    border-color: rgba(0, 0, 0, 0.426);
+    font-weight: 600;
+    cursor: pointer;
+    height: 1.5rem;
+}
+button#EventBtn, #delEventBtn, #cancelEventBtn {
+    margin-top: 0.5rem;
+    width: 200px;
+}
