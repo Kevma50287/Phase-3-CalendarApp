@@ -269,86 +269,137 @@ const UserCalendar = ({ userEvents, user, setUserEvents, group }) => {
 
       {/* TODO: Can only CRUD events themselves right - need to devise a way of adding users and removing users from events using Admin function */}
       {/* TODO: Need to add CSS. Want the form to hover in the middle of the screen with a drop shadow */}
-      <div style={{ display: toggleForm ? "block" : "none" }}>
-        <form
-          id="EventForm"
-          onSubmit={
-            toggleForm === "add"
-              ? (e) => handleAddEvent(e)
-              : (e) => handleUpdateEvent(e)
-          }
-        >
-          <h3>Event Details</h3>
-          <input
-            type="text"
-            className="eventDetailsFormInputs"
-            placeholder="Title"
-            name="title"
-            value={eventDetails.title}
-            onChange={handleEventDetails}
-          ></input>
-          <textarea
-            className="eventDetailsFormInputs"
-            placeholder="Add description..."
-            name="description"
-            value={eventDetails.description}
-            onChange={handleEventDetails}
-          ></textarea>
-          <input
-            type="date"
-            className="eventDetailsFormInputs"
-            placeholder="Enter Start Date"
-            name="startDate"
-            value={eventDetails.startDate}
-            onChange={handleEventDetails}
-          ></input>
-          <input
-            type="time"
-            className="eventDetailsFormInputs"
-            placeholder="Enter Start Time"
-            name="startTime"
-            value={eventDetails.startTime}
-            onChange={handleEventDetails}
-          ></input>
-          <input
-            type="date"
-            className="eventDetailsFormInputs"
-            placeholder="Enter End Date"
-            name="endDate"
-            value={eventDetails.endDate}
-            onChange={handleEventDetails}
-          ></input>
-          <input
-            type="time"
-            className="eventDetailsFormInputs"
-            placeholder="Enter End Time"
-            name="endTime"
-            value={eventDetails.endTime}
-            onChange={handleEventDetails}
-          ></input>
-          <input
-            type="checkbox"
-            className="eventDetailsFormInputs"
-            id="allDay"
-            name="allDay"
-            value={eventDetails.allDay}
-            onChange={handleEventDetails}
-          />{" "}
-          All Day Event?
-          <button id="EventBtn" type="submit">
-            {toggleForm === "add" ? "Add Event" : "Update Event"}
+      <div id = "eventFormModal" style={{ display: toggleForm ? "block" : "none" }}>
+        <div id="EventFormContainer">
+          <form
+            id = "eventForm"
+            onSubmit={
+              toggleForm === "add"
+                ? (e) => handleAddEvent(e)
+                : (e) => handleUpdateEvent(e)
+            }
+          >
+            <h3>Event Details</h3>
+            <div className = "inputLabelContainer">
+              <div className = "labelContainer">
+                <label>Title:&nbsp;</label>
+              </div>
+              <div className = "inputContainer">
+                <input
+                  type="text"
+                  className="eventDetailsFormInputs"
+                  placeholder="Title"
+                  name="title"
+                  value={eventDetails.title}
+                  onChange={handleEventDetails}
+                ></input>
+              </div>
+            </div>
+            <div className = "inputLabelContainer">
+              <div className = "labelContainer">
+                <label id = "description">Description:&nbsp;</label>
+              </div>
+              <div className = "inputContainer">
+                <textarea
+                  className="eventDetailsFormInputs"
+                  placeholder="Add description..."
+                  name="description"
+                  value={eventDetails.description}
+                  onChange={handleEventDetails}
+                ></textarea>
+              </div>              
+            </div>
+            <div className = "inputLabelContainer">
+              <div className = "labelContainer">
+                <label>Start Date:&nbsp;</label>
+              </div>
+              <div className = "inputContainer">
+                <input
+                  type="date"
+                  className="eventDetailsFormInputs"
+                  placeholder="Enter Start Date"
+                  name="startDate"
+                  value={eventDetails.startDate}
+                  onChange={handleEventDetails}
+                ></input>
+              </div>              
+            </div>
+
+            <div className = "inputLabelContainer">
+              <div className = "labelContainer">
+                <label>Start Time:&nbsp;</label>
+              </div>
+              <div className = "inputContainer">
+                <input
+                  type="time"
+                  className="eventDetailsFormInputs"
+                  placeholder="Enter Start Time"
+                  name="startTime"
+                  value={eventDetails.startTime}
+                  onChange={handleEventDetails}
+                ></input>
+              </div>              
+            </div>
+
+            <div className = "inputLabelContainer">
+              <div className = "labelContainer">
+                <label>End Date:&nbsp;</label>
+              </div>
+              <div className = "inputContainer">
+                <input
+                  type="date"
+                  className="eventDetailsFormInputs"
+                  placeholder="Enter End Date"
+                  name="endDate"
+                  value={eventDetails.endDate}
+                  onChange={handleEventDetails}
+                ></input>
+              </div>              
+            </div>
+
+            <div className = "inputLabelContainer">
+              <div className = "labelContainer">
+                <label>End Time:&nbsp;</label>
+              </div>
+              <div className = "inputContainer">
+                <input
+                  type="time"
+                  className="eventDetailsFormInputs"
+                  placeholder="Enter End Time"
+                  name="endTime"
+                  value={eventDetails.endTime}
+                  onChange={handleEventDetails}
+                ></input>
+              </div>              
+            </div>
+
+            
+                <label>All day?<input
+                  type="checkbox"
+                  className="eventDetailsFormInputs"
+                  id="allDay"
+                  name="allDay"
+                  value={eventDetails.allDay}
+                  onChange={handleEventDetails}
+                />{" "}</label>
+
+            <div id = "addEvent"><button id="EventBtn" type="submit">
+              {toggleForm === "add" ? "Add Event" : "Update Event"}
+            </button></div>
+ 
+          </form>
+          
+          <button
+            id="delEventBtn"
+            onClick={handleDelete}
+            style={{ display: toggleForm === "edit" ? "block" : "none" }}
+          >
+            Delete Event
           </button>
-        </form>
-        <button id="cancelEventBtn" onClick={handleCancel}>
-          Cancel
-        </button>
-        <button
-          id="delEventBtn"
-          onClick={handleDelete}
-          style={{ display: toggleForm === "edit" ? "block" : "none" }}
-        >
-          Delete event
-        </button>
+          <button id="cancelEventBtn" onClick={handleCancel}>
+            Cancel
+          </button>
+        </div>
       </div>
     </div>
   );

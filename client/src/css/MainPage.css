@@ -56,7 +56,9 @@ div#calendarContainer{
 }
 
 div.userCalendarContainer {
-    width: 90%
+    width: 90%;
+    position: absolute;
+    top: 20px;
 }
 
 
