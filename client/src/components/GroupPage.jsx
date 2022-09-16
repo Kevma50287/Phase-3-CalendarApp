@@ -3,7 +3,7 @@ import GroupCalendar from "./GroupCalendar"
 import GroupTasks from "./GroupTasks"
 import groupIcon from "../logos/network.png"
 import smallerLogo from "../logos/smallerLogo.png"
-const GroupPage = () => {
+const GroupPage = ({handleLogout}) => {
 
     return(
         <>
@@ -15,7 +15,7 @@ const GroupPage = () => {
                     <h5 id = "smallName">DoWork</h5>
                 </div>
                 <div id = "logoutBtnContainer">
-                    <button id = "logoutBtn">Logout</button> {/*onClick={handleLogout} */}
+                    <button id = "logoutBtn" onClick={handleLogout}>Logout</button> {/*onClick={handleLogout} */}
                 </div>
             </div>
             <div id="sideNavBar">
