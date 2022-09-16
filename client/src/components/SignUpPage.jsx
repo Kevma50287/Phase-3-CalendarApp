@@ -41,7 +41,7 @@ const SignUpPage = ({onSignup}) => {
             console.log(r)
             if (r.ok){
                 r.json().then(user => onSignup(user))
-                navigate('/')
+                navigate('/users')
             } else {
                 r.json().then(err => setErrors(err['error']))
             }

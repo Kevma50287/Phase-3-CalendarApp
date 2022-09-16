@@ -3,11 +3,12 @@ import UserCalendar from "./UserCalendar"
 import { useState, useEffect } from "react"
 import loggedInUserIcon from "../logos/loggedinuser.png"
 import smallerLogo from "../logos/smallerLogo.png"
+import { Outlet } from "react-router-dom"
 const MainPage = ({onLogout}) => {
     const[userEvents, setUserEvents] = useState ([])
 
     useEffect(()=>{
-        fetch("/users/10/events")
+        fetch("/users/1/events")
         .then (r=>r.json())
         .then (userEventData => setUserEvents(userEventData))
     },[])
@@ -63,6 +64,10 @@ const MainPage = ({onLogout}) => {
                             <ul className = "checkBox"><label><input type = "checkBox" className = "checkBoxInput"></input>Work</label></ul>
                         </div>
                 </div>
+            </div>
+            {/* TODO: This is where GroupTasks will appear */}
+            <div>
+                <Outlet />
             </div>
             <div id = "calendarContainer">
                 <UserCalendar userEvents = {userEvents}/>
